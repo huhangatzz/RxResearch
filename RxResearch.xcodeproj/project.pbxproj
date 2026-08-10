@@ -9,10 +9,30 @@
 /* Begin PBXBuildFile section */
 		410E503830295ED7007F7567 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410E502F30295ED7007F7567 /* Assets.xcassets */; };
 		410E503A30295ED7007F7567 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E503230295ED7007F7567 /* LaunchScreen.storyboard */; };
-		410E503B30295ED7007F7567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E503430295ED7007F7567 /* Main.storyboard */; };
 		410E503C30295ED7007F7567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E502E30295ED7007F7567 /* AppDelegate.swift */; };
 		410E503D30295ED7007F7567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E503530295ED7007F7567 /* SceneDelegate.swift */; };
 		410E503E30295ED7007F7567 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E503630295ED7007F7567 /* ViewController.swift */; };
+		411C91B83029657A00625E82 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91B73029657A00625E82 /* AppDelegate+Extension.swift */; };
+		411C91BA3029684300625E82 /* SVProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91B93029684300625E82 /* SVProgressHUD+Extension.swift */; };
+		411C91BC302969F900625E82 /* UITraitCollection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91BB302969F900625E82 /* UITraitCollection+Extension.swift */; };
+		411C91BF30296FDC00625E82 /* NetworkActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91BE30296FDC00625E82 /* NetworkActivityLogger.swift */; };
+		411C91C13029710B00625E82 /* AppDelegate+CrashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91C03029710B00625E82 /* AppDelegate+CrashConfig.swift */; };
+		411C91C3302972E000625E82 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91C2302972E000625E82 /* Collection+Extension.swift */; };
+		411C91C5302974A800625E82 /* AppDelegate+LogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91C4302974A800625E82 /* AppDelegate+LogConfig.swift */; };
+		411C91C8302976CE00625E82 /* CustomLogFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91C7302976CE00625E82 /* CustomLogFileManager.swift */; };
+		411C91CC30297C9000625E82 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91CB30297C9000625E82 /* CustomLogFormatter.swift */; };
+		411C91CE3029803A00625E82 /* AppDelegate+RouterConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91CD3029803A00625E82 /* AppDelegate+RouterConfig.swift */; };
+		411C91D0302980C200625E82 /* LogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91CF302980C200625E82 /* LogUtils.swift */; };
+		411C91D23029824A00625E82 /* AppDelegate+NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91D13029824A00625E82 /* AppDelegate+NetworkConfig.swift */; };
+		411C91D63029838D00625E82 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91D53029838D00625E82 /* AccountManager.swift */; };
+		411C91D8302983C300625E82 /* AccountManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91D7302983C300625E82 /* AccountManageable.swift */; };
+		411C91DB3029A23400625E82 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91DA3029A23400625E82 /* NetworkMonitor.swift */; };
+		411C91DD3029C03000625E82 /* AppDelegate+ScreenCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91DC3029C03000625E82 /* AppDelegate+ScreenCapture.swift */; };
+		411C91DF3029C25D00625E82 /* AppDelegate+SecurityConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91DE3029C25D00625E82 /* AppDelegate+SecurityConfig.swift */; };
+		411C91E13029C2B200625E82 /* KeyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91E03029C2B200625E82 /* KeyConstants.swift */; };
+		411C91E93029C95200625E82 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91E83029C95200625E82 /* Constant.swift */; };
+		411C91ED3029D68B00625E82 /* AppDelegate+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91EC3029D68B00625E82 /* AppDelegate+Debug.swift */; };
+		411C91EF3029D87A00625E82 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */; };
 		50BC48BDBF750D52624455EA /* Pods_RxResearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2F016E294839C2A0210EB8 /* Pods_RxResearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,9 +45,29 @@
 		410E502F30295ED7007F7567 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410E503030295ED7007F7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410E503130295ED7007F7567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		410E503330295ED7007F7567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		410E503530295ED7007F7567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		410E503630295ED7007F7567 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		411C91B73029657A00625E82 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
+		411C91B93029684300625E82 /* SVProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		411C91BB302969F900625E82 /* UITraitCollection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extension.swift"; sourceTree = "<group>"; };
+		411C91BE30296FDC00625E82 /* NetworkActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityLogger.swift; sourceTree = "<group>"; };
+		411C91C03029710B00625E82 /* AppDelegate+CrashConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CrashConfig.swift"; sourceTree = "<group>"; };
+		411C91C2302972E000625E82 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		411C91C4302974A800625E82 /* AppDelegate+LogConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LogConfig.swift"; sourceTree = "<group>"; };
+		411C91C7302976CE00625E82 /* CustomLogFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFileManager.swift; sourceTree = "<group>"; };
+		411C91CB30297C9000625E82 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
+		411C91CD3029803A00625E82 /* AppDelegate+RouterConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+RouterConfig.swift"; sourceTree = "<group>"; };
+		411C91CF302980C200625E82 /* LogUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtils.swift; sourceTree = "<group>"; };
+		411C91D13029824A00625E82 /* AppDelegate+NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NetworkConfig.swift"; sourceTree = "<group>"; };
+		411C91D53029838D00625E82 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		411C91D7302983C300625E82 /* AccountManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManageable.swift; sourceTree = "<group>"; };
+		411C91DA3029A23400625E82 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		411C91DC3029C03000625E82 /* AppDelegate+ScreenCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+ScreenCapture.swift"; sourceTree = "<group>"; };
+		411C91DE3029C25D00625E82 /* AppDelegate+SecurityConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+SecurityConfig.swift"; sourceTree = "<group>"; };
+		411C91E03029C2B200625E82 /* KeyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyConstants.swift; sourceTree = "<group>"; };
+		411C91E83029C95200625E82 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		411C91EC3029D68B00625E82 /* AppDelegate+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Debug.swift"; sourceTree = "<group>"; };
+		411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +112,14 @@
 		410E503730295ED7007F7567 /* RxResearch */ = {
 			isa = PBXGroup;
 			children = (
+				411C91E73029C94700625E82 /* Constant */,
+				411C91E43029C60A00625E82 /* JSONS */,
+				411C91D33029836100625E82 /* Account */,
+				411C91C6302976C300625E82 /* Log */,
 				411C91B53029641900625E82 /* Extension */,
 				410E502F30295ED7007F7567 /* Assets.xcassets */,
 				410E503030295ED7007F7567 /* Info.plist */,
 				410E503230295ED7007F7567 /* LaunchScreen.storyboard */,
-				410E503430295ED7007F7567 /* Main.storyboard */,
 				410E502E30295ED7007F7567 /* AppDelegate.swift */,
 				410E503530295ED7007F7567 /* SceneDelegate.swift */,
 				410E503630295ED7007F7567 /* ViewController.swift */,
@@ -87,7 +130,13 @@
 		411C91B53029641900625E82 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				411C91D93029A22300625E82 /* Utils */,
+				411C91BD30296FCA00625E82 /* AlamofireNetworkActivityLogger */,
 				411C91B63029643000625E82 /* AppDelegate+Extension */,
+				411C91B93029684300625E82 /* SVProgressHUD+Extension.swift */,
+				411C91BB302969F900625E82 /* UITraitCollection+Extension.swift */,
+				411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */,
+				411C91C2302972E000625E82 /* Collection+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -95,8 +144,75 @@
 		411C91B63029643000625E82 /* AppDelegate+Extension */ = {
 			isa = PBXGroup;
 			children = (
+				411C91B73029657A00625E82 /* AppDelegate+Extension.swift */,
+				411C91C03029710B00625E82 /* AppDelegate+CrashConfig.swift */,
+				411C91C4302974A800625E82 /* AppDelegate+LogConfig.swift */,
+				411C91CD3029803A00625E82 /* AppDelegate+RouterConfig.swift */,
+				411C91D13029824A00625E82 /* AppDelegate+NetworkConfig.swift */,
+				411C91DC3029C03000625E82 /* AppDelegate+ScreenCapture.swift */,
+				411C91DE3029C25D00625E82 /* AppDelegate+SecurityConfig.swift */,
+				411C91EC3029D68B00625E82 /* AppDelegate+Debug.swift */,
 			);
 			path = "AppDelegate+Extension";
+			sourceTree = "<group>";
+		};
+		411C91BD30296FCA00625E82 /* AlamofireNetworkActivityLogger */ = {
+			isa = PBXGroup;
+			children = (
+				411C91BE30296FDC00625E82 /* NetworkActivityLogger.swift */,
+			);
+			path = AlamofireNetworkActivityLogger;
+			sourceTree = "<group>";
+		};
+		411C91C6302976C300625E82 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				411C91CF302980C200625E82 /* LogUtils.swift */,
+				411C91CB30297C9000625E82 /* CustomLogFormatter.swift */,
+				411C91C7302976CE00625E82 /* CustomLogFileManager.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		411C91D33029836100625E82 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				411C91D43029837900625E82 /* Manager */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		411C91D43029837900625E82 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				411C91D53029838D00625E82 /* AccountManager.swift */,
+				411C91D7302983C300625E82 /* AccountManageable.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		411C91D93029A22300625E82 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				411C91DA3029A23400625E82 /* NetworkMonitor.swift */,
+				411C91E03029C2B200625E82 /* KeyConstants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		411C91E43029C60A00625E82 /* JSONS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JSONS;
+			sourceTree = "<group>";
+		};
+		411C91E73029C94700625E82 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				411C91E83029C95200625E82 /* Constant.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		E17B407A8B534EEA32DF1D5F /* Frameworks */ = {
@@ -170,7 +286,6 @@
 			files = (
 				410E503830295ED7007F7567 /* Assets.xcassets in Resources */,
 				410E503A30295ED7007F7567 /* LaunchScreen.storyboard in Resources */,
-				410E503B30295ED7007F7567 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,8 +342,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411C91D8302983C300625E82 /* AccountManageable.swift in Sources */,
+				411C91CC30297C9000625E82 /* CustomLogFormatter.swift in Sources */,
+				411C91DD3029C03000625E82 /* AppDelegate+ScreenCapture.swift in Sources */,
+				411C91ED3029D68B00625E82 /* AppDelegate+Debug.swift in Sources */,
+				411C91D23029824A00625E82 /* AppDelegate+NetworkConfig.swift in Sources */,
 				410E503C30295ED7007F7567 /* AppDelegate.swift in Sources */,
+				411C91C8302976CE00625E82 /* CustomLogFileManager.swift in Sources */,
 				410E503D30295ED7007F7567 /* SceneDelegate.swift in Sources */,
+				411C91B83029657A00625E82 /* AppDelegate+Extension.swift in Sources */,
+				411C91DB3029A23400625E82 /* NetworkMonitor.swift in Sources */,
+				411C91EF3029D87A00625E82 /* UIApplication+Extension.swift in Sources */,
+				411C91BF30296FDC00625E82 /* NetworkActivityLogger.swift in Sources */,
+				411C91D63029838D00625E82 /* AccountManager.swift in Sources */,
+				411C91E13029C2B200625E82 /* KeyConstants.swift in Sources */,
+				411C91BA3029684300625E82 /* SVProgressHUD+Extension.swift in Sources */,
+				411C91DF3029C25D00625E82 /* AppDelegate+SecurityConfig.swift in Sources */,
+				411C91C5302974A800625E82 /* AppDelegate+LogConfig.swift in Sources */,
+				411C91CE3029803A00625E82 /* AppDelegate+RouterConfig.swift in Sources */,
+				411C91BC302969F900625E82 /* UITraitCollection+Extension.swift in Sources */,
+				411C91C13029710B00625E82 /* AppDelegate+CrashConfig.swift in Sources */,
+				411C91C3302972E000625E82 /* Collection+Extension.swift in Sources */,
+				411C91E93029C95200625E82 /* Constant.swift in Sources */,
+				411C91D0302980C200625E82 /* LogUtils.swift in Sources */,
 				410E503E30295ED7007F7567 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,14 +380,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		410E503430295ED7007F7567 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				410E503330295ED7007F7567 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -265,11 +393,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7V6ZLVLSAB;
 				ENABLE_BITCODE = "$(inherited)";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxResearch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -299,11 +427,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7V6ZLVLSAB;
 				ENABLE_BITCODE = "$(inherited)";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxResearch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

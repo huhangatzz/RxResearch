@@ -13,6 +13,35 @@ target 'RxResearch' do
   pod 'RxSwift'
   pod 'RxCocoa'
 
+  # UI
+  pod 'SVProgressHUD'
+  
+  # Keyboard,弹不出来的原因是8.0.0之后拆分为不同的模块,需要分别进行配置
+  pod 'IQKeyboardManagerSwift'
+  
+  # Networking
+  pod 'Moya/RxSwift'
+
+  # 微软 Bug&Crash
+  pod 'KSCrash'
+  
+  # 日志打印与跟踪
+  pod 'CocoaLumberjack/Swift'
+  
+  # 用于日志压缩为zip
+  pod 'SSZipArchive'
+  
+  # 考虑使用货拉拉的TheRouter
+  pod 'TheRouter'
+  
+  # Rx Extensions
+  pod 'NSObject+Rx'
+  
+  # 调试
+  pod 'LookinServer', :configurations => ['Debug']
+  pod 'CocoaDebug', :configurations => ['Debug']
+  pod 'FunnyButton', :configurations => ['Debug']
+  pod 'LifetimeTracker', :configurations => ['Debug']
 
 end
 
@@ -67,4 +96,41 @@ post_install do |installer|
       end
     end
   end
+
+  # CocoaPods Keys 2.3.1 generates an NSString-backed lookup table. If a key
+  # contains multi-byte UTF-8 data, characterAtIndex: counts Unicode characters
+  # while the generated indexes are byte offsets, which can crash at runtime.
+  # Convert the generated table to raw bytes so its indexes remain stable.
+  keys_source = File.join(__dir__, 'Pods', 'CocoaPodsKeys', 'RxResearchKeys.m')
+  if File.exist?(keys_source)
+    source = File.binread(keys_source)
+    data_declaration = /static NSString \*RxResearchKeysData = @"(.*)";/n
+
+    if (match = source.match(data_declaration))
+      data_bytes = match[1].bytes
+      # The generator appends an escaped quote sentinel (\\\") to its table.
+      # In the Objective-C source it is emitted as three backslashes and a quote,
+      # while generated indexes address the quote directly.
+      data_bytes[-4, 4] = [0x22] if data_bytes.last(4) == [0x5C, 0x5C, 0x5C, 0x22]
+      byte_values = data_bytes.map { |byte| format('0x%02X', byte) }
+      byte_values << '0x00'
+      byte_declaration = "static const unsigned char RxResearchKeysData[] = { #{byte_values.join(', ')} };"
+
+      source.gsub!(/\[RxResearchKeysData characterAtIndex:(\d+)\]/n, 'RxResearchKeysData[\1]')
+      source.sub!(data_declaration, byte_declaration)
+      File.binwrite(keys_source, source)
+    end
+  end
 end
+
+# 秘钥操作
+# pod keys set xxx ""
+# 移除其中某一个key需要时有: pod keys rm xxx
+plugin 'cocoapods-keys', {
+  :project => "RxResearch",
+  :keys => [
+    "Aliapy_Key",
+    "Wechat_Key",
+    "GeTuiAppSecret_Key"
+  ]
+}
