@@ -83,6 +83,9 @@ PODS:
   - RxCocoa (6.9.0):
     - RxRelay (= 6.9.0)
     - RxSwift (= 6.9.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.9.0):
     - RxSwift (= 6.9.0)
   - RxSwift (6.9.0)
@@ -104,6 +107,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - "NSObject+Rx"
   - RxCocoa
+  - RxGesture
   - RxSwift
   - SSZipArchive
   - SVProgressHUD
@@ -129,6 +133,7 @@ SPEC REPOS:
     - Moya
     - "NSObject+Rx"
     - RxCocoa
+    - RxGesture
     - RxRelay
     - RxSwift
     - SSZipArchive
@@ -159,12 +164,13 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
   RxCocoa: ac16414696ae706516be3e1ab00fcce5bdc9be8a
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 6b0c930e5cef57d5fe2032571e5e65b78e3cbdb1
   RxSwift: 31649ace6aceeb422e16ff71c60804f9c3281ed9
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   TheRouter: 1c7801e4f3df9a2598088d7c3cf4d2f6d3779c51
 
-PODFILE CHECKSUM: 06dee946fa9a55a14360752c0498bcc7421a4d59
+PODFILE CHECKSUM: cca17e729ca1b9626043c3f0c85a1fb4a3934c89
 
 COCOAPODS: 1.16.2

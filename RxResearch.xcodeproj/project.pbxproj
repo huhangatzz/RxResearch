@@ -11,7 +11,7 @@
 		410E503A30295ED7007F7567 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E503230295ED7007F7567 /* LaunchScreen.storyboard */; };
 		410E503C30295ED7007F7567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E502E30295ED7007F7567 /* AppDelegate.swift */; };
 		410E503D30295ED7007F7567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E503530295ED7007F7567 /* SceneDelegate.swift */; };
-		410E503E30295ED7007F7567 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E503630295ED7007F7567 /* ViewController.swift */; };
+		410E503E30295ED7007F7567 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E503630295ED7007F7567 /* MainTabBarController.swift */; };
 		411C91B83029657A00625E82 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91B73029657A00625E82 /* AppDelegate+Extension.swift */; };
 		411C91BA3029684300625E82 /* SVProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91B93029684300625E82 /* SVProgressHUD+Extension.swift */; };
 		411C91BC302969F900625E82 /* UITraitCollection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91BB302969F900625E82 /* UITraitCollection+Extension.swift */; };
@@ -33,6 +33,18 @@
 		411C91E93029C95200625E82 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91E83029C95200625E82 /* Constant.swift */; };
 		411C91ED3029D68B00625E82 /* AppDelegate+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91EC3029D68B00625E82 /* AppDelegate+Debug.swift */; };
 		411C91EF3029D87A00625E82 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */; };
+		413AD824302B020000771C91 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 413AD823302B020000771C91 /* RswiftLibrary */; };
+		413AD827302B02DA00771C91 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 413AD826302B02DA00771C91 /* RswiftLibrary */; };
+		413AD837302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */; };
+		413AD846302B1FF800771C91 /* GrayModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413AD845302B1FF800771C91 /* GrayModeView.swift */; };
+		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
+		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
+		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
+		41E23E20302AF491004D96C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E1F302AF491004D96C7 /* HomeViewController.swift */; };
+		41E23E22302AF4AC004D96C7 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E21302AF4AC004D96C7 /* TabsViewController.swift */; };
+		41E23E24302AF4BD004D96C7 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E23302AF4BD004D96C7 /* TreeViewController.swift */; };
+		41E23E26302AF4D4004D96C7 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E25302AF4D4004D96C7 /* MyViewController.swift */; };
+		41E23E2C302AFB84004D96C7 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 41E23E2B302AFB84004D96C7 /* RswiftLibrary */; };
 		50BC48BDBF750D52624455EA /* Pods_RxResearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2F016E294839C2A0210EB8 /* Pods_RxResearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +58,7 @@
 		410E503030295ED7007F7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410E503130295ED7007F7567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		410E503530295ED7007F7567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		410E503630295ED7007F7567 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		410E503630295ED7007F7567 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		411C91B73029657A00625E82 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
 		411C91B93029684300625E82 /* SVProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Extension.swift"; sourceTree = "<group>"; };
 		411C91BB302969F900625E82 /* UITraitCollection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extension.swift"; sourceTree = "<group>"; };
@@ -68,6 +80,15 @@
 		411C91E83029C95200625E82 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		411C91EC3029D68B00625E82 /* AppDelegate+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Debug.swift"; sourceTree = "<group>"; };
 		411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVCChildrenRefreshProtocol.swift; sourceTree = "<group>"; };
+		413AD845302B1FF800771C91 /* GrayModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayModeView.swift; sourceTree = "<group>"; };
+		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
+		41E23E1F302AF491004D96C7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		41E23E21302AF4AC004D96C7 /* TabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
+		41E23E23302AF4BD004D96C7 /* TreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		41E23E25302AF4D4004D96C7 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +97,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				50BC48BDBF750D52624455EA /* Pods_RxResearch.framework in Frameworks */,
+				413AD827302B02DA00771C91 /* RswiftLibrary in Frameworks */,
+				41E23E2C302AFB84004D96C7 /* RswiftLibrary in Frameworks */,
+				413AD824302B020000771C91 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +136,10 @@
 		410E503730295ED7007F7567 /* RxResearch */ = {
 			isa = PBXGroup;
 			children = (
+				41E23E10302AF3AB004D96C7 /* Home */,
+				41E23E15302AF3F4004D96C7 /* Tabs */,
+				41E23E1A302AF455004D96C7 /* My */,
+				41E23E0A302ACA8A004D96C7 /* Base */,
 				411C91E73029C94700625E82 /* Constant */,
 				411C91E43029C60A00625E82 /* JSONS */,
 				411C91D33029836100625E82 /* Account */,
@@ -122,7 +150,8 @@
 				410E503230295ED7007F7567 /* LaunchScreen.storyboard */,
 				410E502E30295ED7007F7567 /* AppDelegate.swift */,
 				410E503530295ED7007F7567 /* SceneDelegate.swift */,
-				410E503630295ED7007F7567 /* ViewController.swift */,
+				410E503630295ED7007F7567 /* MainTabBarController.swift */,
+				41E23E0E302AF2D2004D96C7 /* TabType.swift */,
 			);
 			path = RxResearch;
 			sourceTree = "<group>";
@@ -137,6 +166,7 @@
 				411C91BB302969F900625E82 /* UITraitCollection+Extension.swift */,
 				411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */,
 				411C91C2302972E000625E82 /* Collection+Extension.swift */,
+				41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -177,6 +207,7 @@
 		411C91D33029836100625E82 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				413AD841302B1FBB00771C91 /* View */,
 				411C91D43029837900625E82 /* Manager */,
 			);
 			path = Account;
@@ -215,6 +246,144 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		413AD841302B1FBB00771C91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				413AD845302B1FF800771C91 /* GrayModeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E23E0A302ACA8A004D96C7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
+				413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		41E23E10302AF3AB004D96C7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				41E23E11302AF3ED004D96C7 /* Controller */,
+				41E23E12302AF3ED004D96C7 /* Enum */,
+				41E23E13302AF3ED004D96C7 /* View */,
+				41E23E14302AF3ED004D96C7 /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		41E23E11302AF3ED004D96C7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E23E1F302AF491004D96C7 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E23E12302AF3ED004D96C7 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		41E23E13302AF3ED004D96C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E23E14302AF3ED004D96C7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		41E23E15302AF3F4004D96C7 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				41E23E16302AF416004D96C7 /* Controller */,
+				41E23E17302AF416004D96C7 /* Enum */,
+				41E23E18302AF416004D96C7 /* View */,
+				41E23E19302AF416004D96C7 /* ViewModel */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		41E23E16302AF416004D96C7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E23E21302AF4AC004D96C7 /* TabsViewController.swift */,
+				41E23E23302AF4BD004D96C7 /* TreeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E23E17302AF416004D96C7 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		41E23E18302AF416004D96C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E23E19302AF416004D96C7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		41E23E1A302AF455004D96C7 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				41E23E1B302AF460004D96C7 /* Controller */,
+				41E23E1C302AF460004D96C7 /* Enum */,
+				41E23E1D302AF460004D96C7 /* View */,
+				41E23E1E302AF460004D96C7 /* ViewModel */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		41E23E1B302AF460004D96C7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E23E25302AF4D4004D96C7 /* MyViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E23E1C302AF460004D96C7 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		41E23E1D302AF460004D96C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E23E1E302AF460004D96C7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E17B407A8B534EEA32DF1D5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +408,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				413AD829302B02EC00771C91 /* PBXTargetDependency */,
 			);
 			name = RxResearch;
 			productName = RxResearch;
@@ -269,6 +439,9 @@
 			);
 			mainGroup = 410E4FFD30295C88007F7567;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 410E500730295C88007F7567 /* Products */;
 			projectDirPath = "";
@@ -342,34 +515,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */,
 				411C91D8302983C300625E82 /* AccountManageable.swift in Sources */,
+				41E23E22302AF4AC004D96C7 /* TabsViewController.swift in Sources */,
 				411C91CC30297C9000625E82 /* CustomLogFormatter.swift in Sources */,
 				411C91DD3029C03000625E82 /* AppDelegate+ScreenCapture.swift in Sources */,
 				411C91ED3029D68B00625E82 /* AppDelegate+Debug.swift in Sources */,
 				411C91D23029824A00625E82 /* AppDelegate+NetworkConfig.swift in Sources */,
 				410E503C30295ED7007F7567 /* AppDelegate.swift in Sources */,
 				411C91C8302976CE00625E82 /* CustomLogFileManager.swift in Sources */,
+				41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */,
 				410E503D30295ED7007F7567 /* SceneDelegate.swift in Sources */,
 				411C91B83029657A00625E82 /* AppDelegate+Extension.swift in Sources */,
+				41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */,
 				411C91DB3029A23400625E82 /* NetworkMonitor.swift in Sources */,
 				411C91EF3029D87A00625E82 /* UIApplication+Extension.swift in Sources */,
+				413AD837302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift in Sources */,
 				411C91BF30296FDC00625E82 /* NetworkActivityLogger.swift in Sources */,
 				411C91D63029838D00625E82 /* AccountManager.swift in Sources */,
 				411C91E13029C2B200625E82 /* KeyConstants.swift in Sources */,
 				411C91BA3029684300625E82 /* SVProgressHUD+Extension.swift in Sources */,
 				411C91DF3029C25D00625E82 /* AppDelegate+SecurityConfig.swift in Sources */,
+				41E23E20302AF491004D96C7 /* HomeViewController.swift in Sources */,
+				41E23E26302AF4D4004D96C7 /* MyViewController.swift in Sources */,
+				413AD846302B1FF800771C91 /* GrayModeView.swift in Sources */,
 				411C91C5302974A800625E82 /* AppDelegate+LogConfig.swift in Sources */,
+				41E23E24302AF4BD004D96C7 /* TreeViewController.swift in Sources */,
 				411C91CE3029803A00625E82 /* AppDelegate+RouterConfig.swift in Sources */,
 				411C91BC302969F900625E82 /* UITraitCollection+Extension.swift in Sources */,
 				411C91C13029710B00625E82 /* AppDelegate+CrashConfig.swift in Sources */,
 				411C91C3302972E000625E82 /* Collection+Extension.swift in Sources */,
 				411C91E93029C95200625E82 /* Constant.swift in Sources */,
 				411C91D0302980C200625E82 /* LogUtils.swift in Sources */,
-				410E503E30295ED7007F7567 /* ViewController.swift in Sources */,
+				410E503E30295ED7007F7567 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		413AD829302B02EC00771C91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 413AD828302B02EC00771C91 /* RswiftGenerateInternalResources */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		410E503230295ED7007F7567 /* LaunchScreen.storyboard */ = {
@@ -408,12 +597,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hh.RxResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -442,12 +635,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hh.RxResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -594,6 +791,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				branch = refactor;
+				kind = branch;
+			};
+		};
+		413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
+		41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = exactVersion;
+				version = 7.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		413AD823302B020000771C91 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		413AD826302B02DA00771C91 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		413AD828302B02EC00771C91 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		41E23E2B302AFB84004D96C7 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 410E4FFE30295C88007F7567 /* Project object */;
 }

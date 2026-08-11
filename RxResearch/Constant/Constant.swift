@@ -17,3 +17,6 @@ let kSafeBottomMargin: CGFloat = UIApplication.shared.mainWindow?.safeAreaInsets
 
 /// 必须这么显式的编写,才能表示其意义
 let void: Void = ()
+
+/// 是否是第一次进入App
+let kIsFirst = "IsFirst"
