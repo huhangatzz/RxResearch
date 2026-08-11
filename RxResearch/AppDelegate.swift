@@ -37,22 +37,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: - 调试工具配置(页面上的悬浮按钮)
         setupDebugTools()
         
-        
         // MARK: - 调试日志
         logPrintDebug()
         
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
+    // MARK: - UIApplication Lifecycle
 
+    func applicationWillResignActive(_ application: UIApplication) {
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+    }
+
+}
+
+extension AppDelegate {
+    // MARK: UISceneSession Lifecycle
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        
     }
-
 }
 
+extension AppDelegate {
+    
+}
