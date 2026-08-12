@@ -16,3 +16,8 @@ class HomeViewController: UIViewController {
     }
 
 }
+
+//app第一次安装时获取网络权限后刷新数据
+extension HomeViewController : TabBarVCChildrenRefreshProtocol {
+    
+}

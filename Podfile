@@ -39,6 +39,12 @@ target 'RxResearch' do
   # 左侧目录最顶部蓝色图标右键找到 RswiftModeifyXcodePackages -> run即可
   # pod 'R.swift'
   
+  # UI
+  pod 'MJRefresh'
+  
+  # Auto Layout
+  pod 'SnapKit'
+  
   # 日志打印与跟踪
   pod 'CocoaLumberjack/Swift'
   

@@ -16,9 +16,8 @@ final class AccountManager: AccountManageable {
     /// 默认是有联网的
     let networkIsReachableRelay = BehaviorRelay(value: true)
     
-    /// 悼念模式
+    /// 悼念模式 (公祭日app全部展示黑白灰色的样式)
     var isGrayModeRelay = BehaviorRelay(value: false)
-    
     
     /// 单例
     static let shared = AccountManager()

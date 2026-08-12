@@ -37,6 +37,17 @@
 		413AD827302B02DA00771C91 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 413AD826302B02DA00771C91 /* RswiftLibrary */; };
 		413AD837302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */; };
 		413AD846302B1FF800771C91 /* GrayModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413AD845302B1FF800771C91 /* GrayModeView.swift */; };
+		4197E32B302C1A8400A4A9FA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E32A302C1A8400A4A9FA /* BaseViewController.swift */; };
+		4197E32D302C22ED00A4A9FA /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E32C302C22ED00A4A9FA /* BaseTableViewController.swift */; };
+		4197E33B302C532B00A4A9FA /* EmptyDataSetView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E339302C532B00A4A9FA /* EmptyDataSetView+Extension.swift */; };
+		4197E33C302C532B00A4A9FA /* EmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E335302C532B00A4A9FA /* EmptyDataSet.swift */; };
+		4197E33D302C532B00A4A9FA /* EmptyDataSetSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E337302C532B00A4A9FA /* EmptyDataSetSource.swift */; };
+		4197E33E302C532B00A4A9FA /* EmptyDataSetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E336302C532B00A4A9FA /* EmptyDataSetDelegate.swift */; };
+		4197E33F302C532B00A4A9FA /* EmptyDataSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E338302C532B00A4A9FA /* EmptyDataSetView.swift */; };
+		4197E34A302C57CA00A4A9FA /* ExBehaviorRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E349302C57CA00A4A9FA /* ExBehaviorRelay.swift */; };
+		4197E34F302C5BE500A4A9FA /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E34E302C5BE500A4A9FA /* NSObject+Extension.swift */; };
+		4197E358302C65DC00A4A9FA /* ObserverType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E357302C65DC00A4A9FA /* ObserverType+Extension.swift */; };
+		4197E363302C709800A4A9FA /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197E362302C709800A4A9FA /* UINavigationController+Extension.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -82,6 +93,17 @@
 		411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVCChildrenRefreshProtocol.swift; sourceTree = "<group>"; };
 		413AD845302B1FF800771C91 /* GrayModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayModeView.swift; sourceTree = "<group>"; };
+		4197E32A302C1A8400A4A9FA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4197E32C302C22ED00A4A9FA /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		4197E335302C532B00A4A9FA /* EmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSet.swift; sourceTree = "<group>"; };
+		4197E336302C532B00A4A9FA /* EmptyDataSetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSetDelegate.swift; sourceTree = "<group>"; };
+		4197E337302C532B00A4A9FA /* EmptyDataSetSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSetSource.swift; sourceTree = "<group>"; };
+		4197E338302C532B00A4A9FA /* EmptyDataSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSetView.swift; sourceTree = "<group>"; };
+		4197E339302C532B00A4A9FA /* EmptyDataSetView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmptyDataSetView+Extension.swift"; sourceTree = "<group>"; };
+		4197E349302C57CA00A4A9FA /* ExBehaviorRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBehaviorRelay.swift; sourceTree = "<group>"; };
+		4197E34E302C5BE500A4A9FA /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		4197E357302C65DC00A4A9FA /* ObserverType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObserverType+Extension.swift"; sourceTree = "<group>"; };
+		4197E362302C709800A4A9FA /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -136,15 +158,16 @@
 		410E503730295ED7007F7567 /* RxResearch */ = {
 			isa = PBXGroup;
 			children = (
+				411C91D33029836100625E82 /* Account */,
 				41E23E10302AF3AB004D96C7 /* Home */,
 				41E23E15302AF3F4004D96C7 /* Tabs */,
 				41E23E1A302AF455004D96C7 /* My */,
 				41E23E0A302ACA8A004D96C7 /* Base */,
 				411C91E73029C94700625E82 /* Constant */,
-				411C91E43029C60A00625E82 /* JSONS */,
-				411C91D33029836100625E82 /* Account */,
-				411C91C6302976C300625E82 /* Log */,
 				411C91B53029641900625E82 /* Extension */,
+				411C91E43029C60A00625E82 /* JSONS */,
+				411C91C6302976C300625E82 /* Log */,
+				4197E332302C530900A4A9FA /* Libs */,
 				410E502F30295ED7007F7567 /* Assets.xcassets */,
 				410E503030295ED7007F7567 /* Info.plist */,
 				410E503230295ED7007F7567 /* LaunchScreen.storyboard */,
@@ -167,6 +190,9 @@
 				411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */,
 				411C91C2302972E000625E82 /* Collection+Extension.swift */,
 				41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */,
+				4197E34E302C5BE500A4A9FA /* NSObject+Extension.swift */,
+				4197E357302C65DC00A4A9FA /* ObserverType+Extension.swift */,
+				4197E362302C709800A4A9FA /* UINavigationController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -227,6 +253,7 @@
 			children = (
 				411C91DA3029A23400625E82 /* NetworkMonitor.swift */,
 				411C91E03029C2B200625E82 /* KeyConstants.swift */,
+				4197E349302C57CA00A4A9FA /* ExBehaviorRelay.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -254,11 +281,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4197E332302C530900A4A9FA /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				4197E33A302C532B00A4A9FA /* EmptyDataSet-Swift */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		4197E33A302C532B00A4A9FA /* EmptyDataSet-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				4197E335302C532B00A4A9FA /* EmptyDataSet.swift */,
+				4197E336302C532B00A4A9FA /* EmptyDataSetDelegate.swift */,
+				4197E337302C532B00A4A9FA /* EmptyDataSetSource.swift */,
+				4197E338302C532B00A4A9FA /* EmptyDataSetView.swift */,
+				4197E339302C532B00A4A9FA /* EmptyDataSetView+Extension.swift */,
+			);
+			path = "EmptyDataSet-Swift";
+			sourceTree = "<group>";
+		};
 		41E23E0A302ACA8A004D96C7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
 				413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */,
+				4197E32A302C1A8400A4A9FA /* BaseViewController.swift */,
+				4197E32C302C22ED00A4A9FA /* BaseTableViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -522,6 +571,7 @@
 				411C91DD3029C03000625E82 /* AppDelegate+ScreenCapture.swift in Sources */,
 				411C91ED3029D68B00625E82 /* AppDelegate+Debug.swift in Sources */,
 				411C91D23029824A00625E82 /* AppDelegate+NetworkConfig.swift in Sources */,
+				4197E32B302C1A8400A4A9FA /* BaseViewController.swift in Sources */,
 				410E503C30295ED7007F7567 /* AppDelegate.swift in Sources */,
 				411C91C8302976CE00625E82 /* CustomLogFileManager.swift in Sources */,
 				41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */,
@@ -531,6 +581,7 @@
 				411C91DB3029A23400625E82 /* NetworkMonitor.swift in Sources */,
 				411C91EF3029D87A00625E82 /* UIApplication+Extension.swift in Sources */,
 				413AD837302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift in Sources */,
+				4197E32D302C22ED00A4A9FA /* BaseTableViewController.swift in Sources */,
 				411C91BF30296FDC00625E82 /* NetworkActivityLogger.swift in Sources */,
 				411C91D63029838D00625E82 /* AccountManager.swift in Sources */,
 				411C91E13029C2B200625E82 /* KeyConstants.swift in Sources */,
@@ -543,11 +594,20 @@
 				41E23E24302AF4BD004D96C7 /* TreeViewController.swift in Sources */,
 				411C91CE3029803A00625E82 /* AppDelegate+RouterConfig.swift in Sources */,
 				411C91BC302969F900625E82 /* UITraitCollection+Extension.swift in Sources */,
+				4197E358302C65DC00A4A9FA /* ObserverType+Extension.swift in Sources */,
 				411C91C13029710B00625E82 /* AppDelegate+CrashConfig.swift in Sources */,
 				411C91C3302972E000625E82 /* Collection+Extension.swift in Sources */,
 				411C91E93029C95200625E82 /* Constant.swift in Sources */,
 				411C91D0302980C200625E82 /* LogUtils.swift in Sources */,
+				4197E363302C709800A4A9FA /* UINavigationController+Extension.swift in Sources */,
+				4197E34A302C57CA00A4A9FA /* ExBehaviorRelay.swift in Sources */,
 				410E503E30295ED7007F7567 /* MainTabBarController.swift in Sources */,
+				4197E33B302C532B00A4A9FA /* EmptyDataSetView+Extension.swift in Sources */,
+				4197E33C302C532B00A4A9FA /* EmptyDataSet.swift in Sources */,
+				4197E33D302C532B00A4A9FA /* EmptyDataSetSource.swift in Sources */,
+				4197E33E302C532B00A4A9FA /* EmptyDataSetDelegate.swift in Sources */,
+				4197E33F302C532B00A4A9FA /* EmptyDataSetView.swift in Sources */,
+				4197E34F302C5BE500A4A9FA /* NSObject+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

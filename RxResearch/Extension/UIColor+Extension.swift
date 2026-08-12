@@ -37,11 +37,9 @@ extension UIColor {
 }
 
 extension UIColor {
-    
     // 文字颜色 light为黑 dark为白
     static let playAndroidTitle = UIColor(lightThemeColor: .black, darkThemeColor: .white)
     
     // 背景颜色 light为白 dark为黑
     static let playAndroidBackground = UIColor(lightThemeColor: .white, darkThemeColor: .black)
-
 }

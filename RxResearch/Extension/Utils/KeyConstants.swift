@@ -62,6 +62,7 @@ enum KeyConstants {
 
 import Keys
 
+//使用这样的方式来存储秘钥
 let aliapyKey = RxResearchKeys().aliapy_Key
 let wechatKey = RxResearchKeys().wechat_Key
 let geTuiKey = RxResearchKeys().geTuiAppSecret_Key

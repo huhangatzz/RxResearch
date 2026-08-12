@@ -54,7 +54,7 @@ extension MainTabBarController {
         
         NetworkMonitor.shared.isConnectedObservable
             .filter { $0 }
-            .take(1)
+            .take(1)//执行一次就取消订阅
             .subscribe { [weak self] _ in //进入闭包,必有网
                 guard let self else { return }
                 
@@ -66,7 +66,6 @@ extension MainTabBarController {
     
     private func refreshChildren() {
         guard let currentVC = selectedViewController as? TabBarVCChildrenRefreshProtocol else { return }
-        
         currentVC.dataRefresh()
     }
     
