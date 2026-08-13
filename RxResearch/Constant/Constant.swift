@@ -18,5 +18,9 @@ let kSafeBottomMargin: CGFloat = UIApplication.shared.mainWindow?.safeAreaInsets
 /// 必须这么显式的编写,才能表示其意义
 let void: Void = ()
 
+/// 命名空间
+let nameSpace = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String
+//可以使用 Bundle.main.executableName,后续测试看是否一致
+
 /// 是否是第一次进入App
 let kIsFirst = "IsFirst"

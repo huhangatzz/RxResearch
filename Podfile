@@ -9,41 +9,39 @@ target 'RxResearch' do
 
   # Pods for RxResearch
 
-  # Rx Core
+  # Rx Core https://github.com/ReactiveX/RxSwift
   pod 'RxSwift'
   pod 'RxCocoa'
-  
+  pod 'RxSwiftExt'
+  pod 'NSObject+Rx'
   # 添加手势与调用会更加简单
   # RxGesture 是 RxSwiftCommunity 的库，把系统 UIGestureRecognizer（点击、长按、拖拽、捏合、滑动）封装成响应式 Observable 流，专门给 RxSwift/RxCocoa 项目用，解决原生手势写大量 delegate/selector 命令式代码的痛点
   pod 'RxGesture'
-
-  # UI
-  pod 'SVProgressHUD'
-  
-  # Keyboard,弹不出来的原因是8.0.0之后拆分为不同的模块,需要分别进行配置
-  pod 'IQKeyboardManagerSwift'
-  
-  # Networking
   pod 'Moya/RxSwift'
+  
   
   # 考虑使用货拉拉的TheRouter
   pod 'TheRouter'
   
-  # Rx Extensions
-  pod 'NSObject+Rx'
-
-
+  # Auto Layout
+  pod 'SnapKit'
+  
+  # UI
+  pod 'MJRefresh'
+  pod 'SVProgressHUD'
+  # Keyboard,弹不出来的原因是8.0.0之后拆分为不同的模块,需要分别进行配置
+  pod 'IQKeyboardManagerSwift'
+  
+  
+  
+  
+  
+  
   # R函数
   # 不使用pod方式,使用Swift Package方式引入 https://github.com/mac-cain13/R.swift
   # 使用步骤: TARGETS -> Build Phases -> Run Build Tool Plug‑ins -> RswiftGenerateInternalResources(Rswift)
   # 左侧目录最顶部蓝色图标右键找到 RswiftModeifyXcodePackages -> run即可
   # pod 'R.swift'
-  
-  # UI
-  pod 'MJRefresh'
-  
-  # Auto Layout
-  pod 'SnapKit'
   
   # 日志打印与跟踪
   pod 'CocoaLumberjack/Swift'

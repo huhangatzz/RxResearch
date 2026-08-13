@@ -7,7 +7,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+import RxSwift
+import RxSwiftExt
+import RxCocoa
+import NSObject_Rx
+
+class HomeViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
