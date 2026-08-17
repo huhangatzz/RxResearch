@@ -43,7 +43,6 @@ let activityPlugin = NetworkActivityPlugin { (state, targetType) in
             SVProgressHUD.showText("似乎已断开与互联网的连接")
             return
         }
-        
     }
     
     if let showLoading = targetType.headers?["showLoading"],

@@ -78,6 +78,7 @@ class BaseViewController: UIViewController {
 
 // MARK: - 网络请求错误页面的配置
 extension BaseViewController {
+    
     private func setupErrorImage() {
         view.addSubview(errorImage)
         errorImage.snp.makeConstraints { make in

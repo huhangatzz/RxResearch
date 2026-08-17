@@ -32,22 +32,25 @@ extension HomeViewController {
     }
     
     private func binding() {
+        //刷新头部
         tableView.mj_header?.rx.refresh
             .map { ScrollViewActionType.refresh }
-            .bind(onNext: viewModel.inputs.loadData)
+            .bind(onNext: viewModel.inputs.loadData)//onNext: 交给一个方法处理
             .disposed(by: rx.disposeBag)
         
+        //刷新尾部
         tableView.mj_footer?.rx.refresh
             .map { ScrollViewActionType.loadMore }
             .bind(onNext: viewModel.inputs.loadData)
             .disposed(by: rx.disposeBag)
         
+        //处理错误图的点击重试
         errorRetry
             .map { ScrollViewActionType.refresh }
             .bind(onNext: viewModel.inputs.loadData)
             .disposed(by: rx.disposeBag)
         
-        /// 绑定数据
+        // 绑定数据
         viewModel.outputs.dataSource
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items) { (tableView, _, info) in
@@ -57,11 +60,13 @@ extension HomeViewController {
             }
             .disposed(by: rx.disposeBag)
         
+        //监听数据是否为空
         viewModel.outputs.dataSource
             .map { $0.isEmpty }
-            .bind(to: isEmptyRelay)
+            .bind(to: isEmptyRelay)//to 传递给另一个Observer
             .disposed(by: rx.disposeBag)
         
+        //控制错误图显示与隐藏
         viewModel.outputs.networkError
             .bind(to: rx.networkError)
             .disposed(by: rx.disposeBag)
