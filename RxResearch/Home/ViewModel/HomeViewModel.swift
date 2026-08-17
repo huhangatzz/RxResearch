@@ -15,7 +15,7 @@ import Moya
 class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
     var pageNum: Int
     
-    init(pageNum: Int) {
+    init(pageNum: Int = 1) {
         self.pageNum = pageNum
         super.init()
         mock()
@@ -167,7 +167,7 @@ extension HomeViewModel {
             .subscribe { event in
                 switch event {
                 case .success(let value):
-                    AccountManager.shared.isGrayModeRelay.accept(false)
+                    AccountManager.shared.isGrayModeRelay.accept(value)
                 case .failure:
                     break
                 }

@@ -19,6 +19,8 @@ target 'RxResearch' do
   pod 'RxGesture'
   pod 'Moya/RxSwift'
   
+  # Image
+  pod 'Kingfisher'
   
   # 考虑使用货拉拉的TheRouter
   pod 'TheRouter'

@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import RxCocoa
 import SVProgressHUD
 import MJRefresh
 
@@ -28,15 +29,6 @@ var isVisibleListRefreshing: Bool {
 
     return windows.contains { containsRefreshingComponent(in: $0) }
 }
-
-/// 将AlamofireNetworkActivityLogger改造成Moya插件进行使用
-let networkRequestLoggerPlugin = NetworkRequestLoggerPlugin(level: .debug)
-
-/// 官方的打印日志插件,没有AlamofireNetworkActivityLogger好用,AlamofireNetworkActivityLogger打印的更为清晰
-let loggerPlugin = NetworkLoggerPlugin.verbose
-
-/// 从RxNetworks改造过来的打印插件
-let debuggingPlugin = NetworkDebuggingPlugin()
 
 /// loading开始与取消插件
 let activityPlugin = NetworkActivityPlugin { (state, targetType) in

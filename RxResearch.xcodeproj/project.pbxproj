@@ -68,6 +68,8 @@
 		41C625CA3032BE4700602223 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C625C93032BE4700602223 /* HUD.swift */; };
 		41C625CF3032BFAA00602223 /* ResponseCachePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C625CE3032BFAA00602223 /* ResponseCachePlugin.swift */; };
 		41C625D43032E58800602223 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C625D33032E58800602223 /* MockService.swift */; };
+		41C625D93032F08400602223 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C625D83032F08400602223 /* InfoCell.swift */; };
+		41C625E03032F48600602223 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C625DF3032F48600602223 /* String+Extension.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -144,6 +146,8 @@
 		41C625C93032BE4700602223 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		41C625CE3032BFAA00602223 /* ResponseCachePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCachePlugin.swift; sourceTree = "<group>"; };
 		41C625D33032E58800602223 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		41C625D83032F08400602223 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		41C625DF3032F48600602223 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				4197E357302C65DC00A4A9FA /* ObserverType+Extension.swift */,
 				4197E362302C709800A4A9FA /* UINavigationController+Extension.swift */,
 				41C625B23032B9D300602223 /* Int+Extension.swift */,
+				41C625DF3032F48600602223 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -391,8 +396,8 @@
 		41C625A13032B2D400602223 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				41C625A53032B31E00602223 /* HomeService.swift */,
 				41C625BC3032BD1200602223 /* Provider.swift */,
+				41C625A53032B31E00602223 /* HomeService.swift */,
 				41C625D33032E58800602223 /* MockService.swift */,
 			);
 			path = Service;
@@ -456,6 +461,7 @@
 		41E23E13302AF3ED004D96C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41C625D83032F08400602223 /* InfoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -734,10 +740,12 @@
 				41C625CA3032BE4700602223 /* HUD.swift in Sources */,
 				41C6258D3032A93F00602223 /* WebLoadInfo.swift in Sources */,
 				410E503E30295ED7007F7567 /* MainTabBarController.swift in Sources */,
+				41C625D93032F08400602223 /* InfoCell.swift in Sources */,
 				41C625B33032B9D300602223 /* Int+Extension.swift in Sources */,
 				4197E33B302C532B00A4A9FA /* EmptyDataSetView+Extension.swift in Sources */,
 				4197E33C302C532B00A4A9FA /* EmptyDataSet.swift in Sources */,
 				4197E33D302C532B00A4A9FA /* EmptyDataSetSource.swift in Sources */,
+				41C625E03032F48600602223 /* String+Extension.swift in Sources */,
 				4197E374302D6F9700A4A9FA /* HomeViewModel.swift in Sources */,
 				41C625C53032BDC100602223 /* ResponseInterceptorPlugin.swift in Sources */,
 				4197E36A302D595500A4A9FA /* BaseViewModel.swift in Sources */,

@@ -46,6 +46,7 @@ PODS:
   - IQTextView (1.0.5):
     - IQKeyboardToolbar/Placeholderable
   - Keys (1.0.1)
+  - Kingfisher (8.11.0)
   - KSCrash (2.6.0):
     - KSCrash/Installations (= 2.6.0)
   - KSCrash/Core (2.6.0)
@@ -111,6 +112,7 @@ DEPENDENCIES:
   - FunnyButton
   - IQKeyboardManagerSwift
   - Keys (from `Pods/CocoaPodsKeys`)
+  - Kingfisher
   - KSCrash
   - LifetimeTracker
   - LookinServer
@@ -140,6 +142,7 @@ SPEC REPOS:
     - IQKeyboardToolbarManager
     - IQTextInputViewNotification
     - IQTextView
+    - Kingfisher
     - KSCrash
     - LifetimeTracker
     - LookinServer
@@ -174,6 +177,7 @@ SPEC CHECKSUMS:
   IQTextInputViewNotification: 3b9fb27a16e7ee8958cc9092cfb07a1a9e1fd559
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  Kingfisher: ee4ff4936d5b399164b6d01a0dfc0388583287b6
   KSCrash: 8515730b020ffc714bb10406a3bd289b28a81c6f
   LifetimeTracker: e53352c120da5ab365767f27bbbbcf0c249de3d1
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
@@ -190,6 +194,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   TheRouter: 1c7801e4f3df9a2598088d7c3cf4d2f6d3779c51
 
-PODFILE CHECKSUM: 15c76759596d3db3b36706faa0794238e3b293e2
+PODFILE CHECKSUM: 18ef13ef5ae1d48714b52b50cd7bf81403331205
 
 COCOAPODS: 1.16.2

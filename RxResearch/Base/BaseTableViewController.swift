@@ -26,7 +26,8 @@ class BaseTableViewController: BaseViewController {
     let isEmptyRelay = ExBehaviorRelay(value: false, isIgnoreInitValue: true)
     
     //获取所有cell
-    static let allClass: [UITableViewCell.Type] = [UITableViewCell.self]
+    static let allClass: [UITableViewCell.Type] = [UITableViewCell.self,
+                                                   InfoCell.self]
     
     override func viewDidLoad() {
         super.viewDidLoad()

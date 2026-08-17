@@ -9,12 +9,12 @@ import Foundation
 import Moya
 import Alamofire
 
-enum MockService {
+nonisolated enum MockService {
     /// 悼念模式
     case mourn
 }
 
-extension MockService: TargetType {
+nonisolated extension MockService: TargetType {
     var baseURL: URL {
         return URL(string: Api.baseUrl)!
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 enum Api {
-    static let baseUrl = "https://www.wanandroid.com/"
+    nonisolated static let baseUrl = "https://www.wanandroid.com/"
     static let newBaseUrl = "https://wanandroid.com/"
 }
 
@@ -34,6 +34,6 @@ extension Api {
 
 extension Api {
     enum Mock {
-        static let mourn = "mourn/json"
+        nonisolated static let mourn = "mourn/json"
     }
 }
