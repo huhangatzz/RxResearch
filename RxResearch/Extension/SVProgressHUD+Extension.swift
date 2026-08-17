@@ -7,6 +7,21 @@
 
 import SVProgressHUD
 
+extension SVProgressHUD: HUD {
+    
+    static func beginLoading() {
+        SVProgressHUD.show()
+    }
+    
+    static func stopLoading() {
+        SVProgressHUD.dismiss()
+    }
+    
+    static func showText(_ text: String) {
+        SVProgressHUD.show(UIImage(), status: text)
+    }
+}
+
 //展示活动提示器
 extension SVProgressHUD {
     static func setting() {
