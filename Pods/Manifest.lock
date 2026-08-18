@@ -46,6 +46,7 @@ PODS:
     - IQKeyboardCore
   - IQTextView (1.0.5):
     - IQKeyboardToolbar/Placeholderable
+  - JWNetAutoCache (0.0.2)
   - Keys (1.0.1)
   - Kingfisher (8.11.0)
   - KSCrash (2.6.0):
@@ -75,6 +76,7 @@ PODS:
   - LookinServer (1.2.8):
     - LookinServer/Core (= 1.2.8)
   - LookinServer/Core (1.2.8)
+  - MarqueeLabel (4.5.3)
   - MJRefresh (3.7.9)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
@@ -113,11 +115,13 @@ DEPENDENCIES:
   - FSPagerView
   - FunnyButton
   - IQKeyboardManagerSwift
+  - JWNetAutoCache
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
   - KSCrash
   - LifetimeTracker
   - LookinServer
+  - MarqueeLabel
   - MJRefresh
   - Moya/RxSwift
   - "NSObject+Rx"
@@ -145,10 +149,12 @@ SPEC REPOS:
     - IQKeyboardToolbarManager
     - IQTextInputViewNotification
     - IQTextView
+    - JWNetAutoCache
     - Kingfisher
     - KSCrash
     - LifetimeTracker
     - LookinServer
+    - MarqueeLabel
     - MJRefresh
     - Moya
     - "NSObject+Rx"
@@ -180,11 +186,13 @@ SPEC CHECKSUMS:
   IQKeyboardToolbarManager: 242e858cc74e06e00aa989bea1355b24d4397854
   IQTextInputViewNotification: 3b9fb27a16e7ee8958cc9092cfb07a1a9e1fd559
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
+  JWNetAutoCache: 434f10855da06d29a381359552ae9d27ef35cad7
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: ee4ff4936d5b399164b6d01a0dfc0388583287b6
   KSCrash: 8515730b020ffc714bb10406a3bd289b28a81c6f
   LifetimeTracker: e53352c120da5ab365767f27bbbbcf0c249de3d1
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
+  MarqueeLabel: 0c57d4c6634e04a6d015af79f7c9a175b2309525
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
@@ -198,6 +206,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   TheRouter: 1c7801e4f3df9a2598088d7c3cf4d2f6d3779c51
 
-PODFILE CHECKSUM: 0f1b091c074b20fc621a17685bd51be2ffc26394
+PODFILE CHECKSUM: 9aa83f2cba60e6f06cbad1483d88e48b842fe162
 
 COCOAPODS: 1.16.2

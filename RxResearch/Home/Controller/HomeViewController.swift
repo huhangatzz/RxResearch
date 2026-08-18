@@ -14,6 +14,7 @@ import RxCocoa
 import NSObject_Rx
 
 import MJRefresh
+import SVProgressHUD
 
 class HomeViewController: BaseTableViewController {
     private let viewModel = HomeViewModel()
@@ -22,9 +23,8 @@ class HomeViewController: BaseTableViewController {
     private lazy var bannerView: HomeBannerView = {
         let width = view.bounds.width
         let bannerView = HomeBannerView(frame: CGRect(x: 0, y: 0, width: width, height: width / 16 * 9))
-        bannerView.onSelectBanner = { banner in
-            debugLog("点击了轮播图的\(banner)")
-            // pushToWebViewController(webLoadInfo: banner, isNeedShowCollection: false)
+        bannerView.onSelectBanner = { [weak self] banner in
+            self?.pushToWebViewController(webLoadInfo: banner, isNeedShowCollection: false)
         }
         return bannerView
     }()
@@ -88,7 +88,28 @@ extension HomeViewController {
             .bind(to: tableView.rx.refreshAction)
             .disposed(by: rx.disposeBag)
         
-        /// 轮播图数据驱动
+        //线路 8：获取cell中的模型
+        tableView.rx.modelSelected(Info.self)
+            .subscribe(onNext: { [weak self] model in
+                debugLog("模型为:\(model)")
+                if model.id == 24742 {
+                    if OtherApp.qq.isCanOpen {
+                        /// 这里将https改为mqq,虽然可以直接跳转到QQ,但是没有办法正常添加QQ群了
+                        if let urlString = model.link?.replaceHtmlElement,
+                           let url = URL(string: urlString),
+                           UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
+                    } else {
+                        SVProgressHUD.showText("请先安装手机QQ")
+                    }
+                } else {
+                    self?.pushToWebViewController(webLoadInfo: model)
+                }
+            })
+            .disposed(by: rx.disposeBag)
+        
+        //线路 9：轮播图数据驱动
         viewModel.outputs.banners
             .bind(to: bannerView.rx.banners)
             .disposed(by: rx.disposeBag)

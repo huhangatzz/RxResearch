@@ -79,6 +79,14 @@ class BaseViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    /// 写在extension分类中的方法不能被重写必须写在class里面
+    @discardableResult
+    func pushToWebViewController(webLoadInfo: WebLoadInfo, isNeedShowCollection: Bool = true) -> WebViewController {
+        let vc = WebViewController(webLoadInfo: webLoadInfo, isNeedShowCollection: isNeedShowCollection)
+        navigationController?.pushViewController(vc, animated: true)
+        return vc
+    }
+    
     deinit {
         deinitDDLog()
     }

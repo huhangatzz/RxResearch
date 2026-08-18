@@ -35,10 +35,12 @@ target 'RxResearch' do
   pod 'IQKeyboardManagerSwift'
   # 轮播图
   pod 'FSPagerView'
+  # 文本轮播
+  pod 'MarqueeLabel'
   
-  
-  
-  
+
+  # web缓存+离线缓存
+  pod 'JWNetAutoCache'
   
   # R函数
   # 不使用pod方式,使用Swift Package方式引入 https://github.com/mac-cain13/R.swift

@@ -71,6 +71,12 @@ let plugins: [PluginType] = [activityPlugin, responseInterceptorPlugin, response
 /// 首页
 let homeProvider = MoyaProvider<HomeService>(plugins: plugins)
 
+/// 我的
+let myEndpointClosure = { (target: MyService) -> Endpoint in
+    let defaultEndpoint = MoyaProvider.defaultEndpointMapping(for: target)
+    return defaultEndpoint.adding(newHTTPHeaderFields: AccountManager.shared.isLoginRelay.value ? ["cookie": AccountManager.shared.cookieHeaderValue] : .empty)
+}
+let myProvider = MoyaProvider<MyService>(endpointClosure: myEndpointClosure, plugins: plugins)
 
 /// 悼念数据业务
 let mockProvider = MoyaProvider(stubClosure: MoyaProvider<MockService>.immediatelyStub)

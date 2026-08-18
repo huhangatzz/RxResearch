@@ -38,6 +38,16 @@ extension Api {
 }
 
 
+extension Api {
+    /// 我的 取消收藏和点击收藏操作为post,其他为get
+    enum My {
+        
+        static let collectArticle = "lg/collect/"
+
+        static let unCollectArticle = "lg/uncollect_originId/"
+ 
+    }
+}
 
 
 //悼念接口
