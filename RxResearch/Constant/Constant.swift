@@ -22,14 +22,20 @@ let void: Void = ()
 let nameSpace = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String
 //可以使用 Bundle.main.executableName,后续测试看是否一致
 
-/// 屏宽
-let kScreenWidth = UIScreen.main.bounds.width
+/// 当前活跃窗口的宽度。使用计算属性，避免在 App 启动时过早固化尺寸。
+var kScreenWidth: CGFloat {
+    UIApplication.shared.mainWindow?.bounds.width ?? 0
+}
 
-/// 屏宽的9/16
-let kScreenWidth_9_16 = UIScreen.main.bounds.width / 16.0 * 9
+/// 当前活跃窗口宽度对应的 9:16 高度。
+var kScreenWidth_9_16: CGFloat {
+    kScreenWidth / 16 * 9
+}
 
-/// 屏高
-let kScreenHeight = UIScreen.main.bounds.height
+/// 当前活跃窗口的高度。
+var kScreenHeight: CGFloat {
+    UIApplication.shared.mainWindow?.bounds.height ?? 0
+}
 
 /// 整体顶部间距(竖屏限定)
 let kTopMargin = kStatusBarHeight + kNavigationBarHeight

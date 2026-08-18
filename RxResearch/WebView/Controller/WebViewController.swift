@@ -75,7 +75,8 @@ class WebViewController: BaseViewController {
     }()
     
     private lazy var lengthyLabel: MarqueeLabel = {
-        let label = MarqueeLabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 100, height: 44), duration: 8.0, fadeLength: 10.0)
+        let width = max(view.bounds.width - 100, 0)
+        let label = MarqueeLabel(frame: CGRect(x: 0, y: 0, width: width, height: 44), duration: 8.0, fadeLength: 10.0)
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         return label
@@ -443,9 +444,17 @@ extension WebViewController: WKNavigationDelegate {
         delayEndRefreshing()
         /// 加载完网页后,执行js方法,会根据打开的网页,决定不同的注入依赖
         /// 将在App端通过JS编写的点击事件与掘金网页的"APP内打开绑定"
-        webView.evaluateJavaScript("injectBegin('\(webView.url?.absoluteString)')") { any, error in
-            debugLog(any)
-            debugLog(error)
+        let urlString = webView.url?.absoluteString ?? ""
+        if let jsonData = try? JSONEncoder().encode(urlString),
+           let urlArgument = String(data: jsonData, encoding: .utf8) {
+            webView.evaluateJavaScript("injectBegin(\(urlArgument))") { result, error in
+                if let result {
+                    debugLog(result)
+                }
+                if let error {
+                    debugLog(error)
+                }
+            }
         }
         
         /// 执行灰色模式
