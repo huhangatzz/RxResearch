@@ -50,6 +50,15 @@ class InfoCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        picView.kf.cancelDownloadTask()
+        picView.image = nil
+        contentLabel.text = nil
+        authorLabel.text = nil
+        praiseLabel.text = nil
+    }
     
     private func setupUI() {
         accessoryType = .disclosureIndicator
@@ -106,11 +115,13 @@ extension InfoCell {
                      .scaleFactor(traitCollection.displayScale),
                      .cacheSerializer(FormatIndicatedCacheSerializer.png)])
                 
-                // update对于其他控件的依赖是不能变更,只能改变offset的数值
-                contentLabel.snp.makeConstraints { make in
+                // 初始约束已经存在，Cell 重用时只更新 offset，避免重复添加约束。
+                contentLabel.snp.updateConstraints { make in
                     make.leading.equalToSuperview().offset(76)
                 }
             } else {
+                picView.kf.cancelDownloadTask()
+                picView.image = nil
                 picView.isHidden = true
                 contentLabel.snp.updateConstraints { make in
                     make.leading.equalToSuperview().offset(16)

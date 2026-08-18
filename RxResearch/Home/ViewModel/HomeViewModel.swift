@@ -36,20 +36,24 @@ class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
     //轮播图数据
     let banners = BehaviorRelay<[Banner]>(value: [])
     
-    /// 首次进入由控制器直接请求，不自动播放下拉刷新动画。
-    let refreshSubject = BehaviorSubject<MJRefreshAction>(value: .stopRefresh)
+    /// 刷新控件命令是一次性事件，不需要向新订阅者重放上一条命令。
+    let refreshSubject = PublishSubject<MJRefreshAction>()
     
     /// inputs
     func loadData(actionType: ScrollViewActionType) {
         switch actionType {
         case .refresh:
+            // 首次进入先展示有效缓存；下拉刷新时保留当前数据，不用旧缓存覆盖。
+            loadCachedHomeDataIfNeeded()
+            // 轮播图目前不参与首屏列表展示，独立请求，避免阻塞文章数据。
+            refreshBannerData()
             /*
              Single.zip合并请求,规则如下:
-             三个都成功：整体成功。
+             两个都成功：整体成功。
              任意一个失败：整体失败。
              成功结果按顺序组成元组。
              */
-            Single.zip(bannerData(), topArticleData(), refresh())
+            Single.zip(topArticleData(), refresh())
                 .subscribe { event in
                     
                     //无论成功失败，当前代码都会先停止下拉刷新
@@ -57,14 +61,13 @@ class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
                     
                     switch event {
                     case .success(let tuple):
-                        
+
                         //刷新成功,隐藏错误视图
                         self.networkError.onNext(nil)
-                        
-                        //拆开三个结果
-                        let items = tuple.0
-                        let topInfos = tuple.1
-                        let normalPageModel = tuple.2
+
+                        //拆开置顶文章和普通文章结果
+                        let topInfos = tuple.0
+                        let normalPageModel = tuple.1
                         
                         /// 合并置顶文章和普通文章
                         if let normalInfos = normalPageModel.data?.datas {
@@ -82,8 +85,6 @@ class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
                             }
                         }
                         
-                        //获取轮播图数据
-                        self.banners.accept(items)
                     case .failure(let error):
                         //判断错误是否是MoyaError
                         guard let moyaError = error as? MoyaError else { return }
@@ -101,18 +102,19 @@ class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
                 .disposed(by: disposeBag)
         case .loadMore:
             loadMore()
-            /// 由于需要使用Page,所以return到$0.data这一层,而不是$0.data.datas
-            /// 在 Single 上使用 compactMap 后，如果结果是 nil，可能形成“没有元素”的序列，所以代码才又做了：.asObservable()和.asSingle()
-                .compactMap { $0.data }//过滤掉nil数据
-                .asObservable()
-                .asSingle()
                 .subscribe { event in
                     
                     /// 结束刷新
                     self.refreshSubject.onNext(.stopLoadmore)
                     
                     switch event {
-                    case .success(let pageModel):
+                    case .success(let response):
+                        guard let pageModel = response.data else {
+                            // 接口成功返回但分页数据为空时，同样回退预增的页码。
+                            self.loadMoreFailureResetCurrentPage()
+                            return
+                        }
+                        
                         //加载更多：旧数据 + 下一页数据
                         if let datas = pageModel.datas {
                             self.dataSource.accept(self.dataSource.value + datas)
@@ -134,6 +136,40 @@ class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
 
 // MARK: - 网络请求
 private extension HomeViewModel {
+    /// 首屏采用 stale-while-revalidate：立即展示缓存，后续网络结果再覆盖它。
+    func loadCachedHomeDataIfNeeded() {
+        guard dataSource.value.isEmpty else { return }
+
+        let normalTarget = HomeService.normalArticle(0)
+        guard let normalResponse = responseCachePlugin.cachedResponse(for: normalTarget),
+              let normalModel = try? normalResponse.map(BaseModel<Page<Info>>.self),
+              let normalInfos = normalModel.data?.datas else {
+            return
+        }
+
+        var topInfos: [Info] = []
+        if let topResponse = responseCachePlugin.cachedResponse(for: HomeService.topArticle),
+           let topModel = try? topResponse.map(BaseModel<[Info]>.self) {
+            topInfos = topModel.data ?? []
+        }
+
+        dataSource.accept(topInfos + normalInfos)
+
+        if let bannerResponse = responseCachePlugin.cachedResponse(for: HomeService.banner),
+           let bannerModel = try? bannerResponse.map(BaseModel<[Banner]>.self) {
+            banners.accept(bannerModel.data ?? [])
+        }
+    }
+
+    /// 轮播图是非关键模块，它的耗时或失败不应阻塞首屏文章。
+    func refreshBannerData() {
+        bannerData()
+            .subscribe(onSuccess: { [weak self] items in
+                self?.banners.accept(items)
+            })
+            .disposed(by: disposeBag)
+    }
+
     /// 下拉刷新操作
     func refresh() -> Single<BaseModel<Page<Info>>> {
         resetCurrentPageAndMjFooter()
@@ -150,34 +186,26 @@ private extension HomeViewModel {
     /// - Parameter page: 页码
     /// - Returns: Single<BaseModel<Page<Info>>>
     func requestData(page: Int) -> Single<BaseModel<Page<Info>>> {
-        let result = homeProvider.rx.request(HomeService.normalArticle(page))
+        homeProvider.rx.request(HomeService.normalArticle(page))
             .map(BaseModel<Page<Info>>.self)
-            .catchAndReturn(BaseModel<Page<Info>>(data: nil, errorCode: nil, errorMsg: nil))
-        return result
     }
     
     /// 置顶文章
     /// - Returns: Single<[Info]>
     func topArticleData() -> Single<[Info]> {
-        let result = homeProvider.rx.request(HomeService.topArticle)
+        homeProvider.rx.request(HomeService.topArticle)
             .map(BaseModel<[Info]>.self)
-            .compactMap { $0.data }
+            .map { $0.data ?? [] }
             .catchAndReturn([])
-            .asObservable()
-            .asSingle()
-        return result
     }
     
     /// 轮播图
     /// - Returns: Single<[Banner]>
     func bannerData() -> Single<[Banner]> {
-        let result = homeProvider.rx.request(HomeService.banner)
+        homeProvider.rx.request(HomeService.banner)
             .map(BaseModel<[Banner]>.self)
-            .compactMap { $0.data }
+            .map { $0.data ?? [] }
             .catchAndReturn([])
-            .asObservable()
-            .asSingle()
-        return result
     }
 }
 

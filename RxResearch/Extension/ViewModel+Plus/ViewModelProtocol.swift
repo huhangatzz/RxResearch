@@ -43,5 +43,5 @@ protocol PageVMBaseSetting {
 /// 包含分页的PageVM设置
 protocol PageVMSetting: PageVMBaseSetting {
     /// 刷新状态值
-    var refreshSubject: BehaviorSubject<MJRefreshAction> { get }
+    var refreshSubject: PublishSubject<MJRefreshAction> { get }
 }

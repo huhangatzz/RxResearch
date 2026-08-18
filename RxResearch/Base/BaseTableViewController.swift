@@ -42,7 +42,7 @@ extension BaseTableViewController {
         
         tableView.tableFooterView = UIView()
         tableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
-        gcdMainAsyncLayout()
+        addTableViewAndLayout()
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -69,35 +69,28 @@ extension BaseTableViewController {
             .disposed(by: rx.disposeBag)
         
         /// 订阅点击了数据为空，请重试的行为，里面没有用状态去绑定tableView是因为没有ViewModel
-        emptyDataSetButtonTap.subscribe { [weak self] _ in
-            self?.tableView.mj_header?.beginRefreshing()
-        }
-        .disposed(by: rx.disposeBag)
+        emptyDataSetButtonTap
+            .bind { [weak self] _ in
+                self?.tableView.mj_header?.beginRefreshing()
+            }
+            .disposed(by: rx.disposeBag)
         
         /// 数据为空的订阅
-        isEmptyRelay.subscribe { [weak self] event in
-            switch event {
-            case .next(let noContent):
+        isEmptyRelay
+            .distinctUntilChanged()
+            .bind { [weak self] noContent in
+                guard let self else { return }
+                tableView.reloadEmptyDataSet()
                 if noContent {
                     debugLog("监听没有内容")
-                    self?.tableView.reloadEmptyDataSet()
-                    self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
+                    tableView.mj_footer?.endRefreshingWithNoMoreData()
                 }
-            default:
-                break
             }
-        }
-        .disposed(by: rx.disposeBag)
+            .disposed(by: rx.disposeBag)
     }
 }
 
 extension BaseTableViewController {
-    private func gcdMainAsyncLayout() {
-        DispatchQueue.main.async {
-            self.addTableViewAndLayout()
-        }
-    }
-    
     private func addTableViewAndLayout() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in

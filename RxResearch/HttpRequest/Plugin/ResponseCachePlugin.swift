@@ -97,7 +97,7 @@ class ResponseCachePlugin: PluginType {
             saveResponse(response: response, target: target)
             return result
         case .failure:
-            if let respone = getResponse(target: target) {
+            if let respone = cachedResponse(for: target) {
                 return .success(respone)
             }
             
@@ -127,7 +127,8 @@ class ResponseCachePlugin: PluginType {
         }
     }
     
-    private func getResponse(target: TargetType) -> Moya.Response? {
+    /// 直接读取未过期的缓存响应，供页面实现“缓存先展示、网络后刷新”。
+    func cachedResponse(for target: TargetType) -> Moya.Response? {
         /// 白名单二次校验
         guard shouldCache(target) else { return nil }
         

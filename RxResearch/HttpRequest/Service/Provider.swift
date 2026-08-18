@@ -33,16 +33,11 @@ var isVisibleListRefreshing: Bool {
 /// loading开始与取消插件
 let activityPlugin = NetworkActivityPlugin { (state, targetType) in
     
-    /// 添加无网络拦截
-    if AccountManager.shared.networkIsReachableRelay.value == false {
-        if plugins.contains(where: {
-            return $0 is ResponseCachePlugin
-        }) {
-            return
-        } else {
-            SVProgressHUD.showText("似乎已断开与互联网的连接")
-            return
-        }
+    /// 启动初期的网络状态可能还没有更新；有缓存降级能力时仍继续 HUD 流程。
+    if AccountManager.shared.networkIsReachableRelay.value == false,
+       !plugins.contains(where: { $0 is ResponseCachePlugin }) {
+        SVProgressHUD.showText("似乎已断开与互联网的连接")
+        return
     }
     
     if let showLoading = targetType.headers?["showLoading"],

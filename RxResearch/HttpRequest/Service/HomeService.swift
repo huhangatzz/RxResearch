@@ -65,6 +65,12 @@ extension HomeService: TargetType {
     }
     
     var headers: [String : String]? {
-        nil
+        switch self {
+        case .banner, .topArticle:
+            // 非关键请求不单独控制全局 HUD，避免多个并发请求互相干扰加载状态。
+            return ["showLoading": "false"]
+        default:
+            return nil
+        }
     }
 }
