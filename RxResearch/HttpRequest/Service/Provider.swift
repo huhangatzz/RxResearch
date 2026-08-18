@@ -72,5 +72,5 @@ let plugins: [PluginType] = [activityPlugin, responseInterceptorPlugin, response
 let homeProvider = MoyaProvider<HomeService>(plugins: plugins)
 
 
-/// mock数据业务
+/// 悼念数据业务
 let mockProvider = MoyaProvider(stubClosure: MoyaProvider<MockService>.immediatelyStub)

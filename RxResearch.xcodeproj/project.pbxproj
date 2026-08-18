@@ -386,9 +386,9 @@
 			children = (
 				41C625963032AE0400602223 /* BaseModel.swift */,
 				41C625873032A8F200602223 /* Info.swift */,
-				41C6258C3032A93F00602223 /* WebLoadInfo.swift */,
 				41C625913032AA5400602223 /* Banner.swift */,
 				41C6259C3032AECF00602223 /* Page.swift */,
+				41C6258C3032A93F00602223 /* WebLoadInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

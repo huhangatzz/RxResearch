@@ -8,13 +8,22 @@
 import Foundation
 
 enum Api {
+    
+    #if DEBUG // 测试环境
+
     nonisolated static let baseUrl = "https://www.wanandroid.com/"
     static let newBaseUrl = "https://wanandroid.com/"
+    
+    #else// 正式环境
+    
+    nonisolated static let baseUrl = "https://www.wanandroid.com/"
+    static let newBaseUrl = "https://wanandroid.com/"
+    
+    #endif
 }
 
 /// 首页
 extension Api {
-    //queryKeyword是post请求 其他的是get请求
     enum Home {
         static let banner = "banner/json"
 
@@ -31,7 +40,7 @@ extension Api {
 
 
 
-
+//悼念接口
 extension Api {
     enum Mock {
         nonisolated static let mourn = "mourn/json"

@@ -94,10 +94,10 @@ extension BaseViewController {
         }
         errorImage.isHidden = true
         
-        //点击错误图重试
+        //点击错误图重试 RxGesture
         errorImage.rx.tapGesture()//监听图片手势
             .when(.recognized)//只保留识别成功的点击事件
-            .map { _ in }//把手势对象转成 Void
+            .map { _ in }//把手势对象事件转成 Void事件
             .bind(to: errorRetry)//把点击事件发送给 errorRetry
             .disposed(by: rx.disposeBag)//控制器销毁时取消监听
     }
