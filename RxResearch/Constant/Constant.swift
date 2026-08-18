@@ -22,5 +22,14 @@ let void: Void = ()
 let nameSpace = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String
 //可以使用 Bundle.main.executableName,后续测试看是否一致
 
+/// 屏宽
+let kScreenWidth = UIScreen.main.bounds.width
+
+/// 屏宽的9/16
+let kScreenWidth_9_16 = UIScreen.main.bounds.width / 16.0 * 9
+
+/// 屏高
+let kScreenHeight = UIScreen.main.bounds.height
+
 /// 是否是第一次进入App
 let kIsFirst = "IsFirst"

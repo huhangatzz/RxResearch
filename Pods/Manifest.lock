@@ -4,6 +4,7 @@ PODS:
   - CocoaLumberjack/Core (3.9.1)
   - CocoaLumberjack/Swift (3.9.1):
     - CocoaLumberjack/Core
+  - FSPagerView (0.8.3)
   - FunnyButton (0.1.6)
   - IQKeyboardCore (1.0.9)
   - IQKeyboardManagerSwift (8.0.3):
@@ -109,6 +110,7 @@ PODS:
 DEPENDENCIES:
   - CocoaDebug
   - CocoaLumberjack/Swift
+  - FSPagerView
   - FunnyButton
   - IQKeyboardManagerSwift
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -133,6 +135,7 @@ SPEC REPOS:
     - Alamofire
     - CocoaDebug
     - CocoaLumberjack
+    - FSPagerView
     - FunnyButton
     - IQKeyboardCore
     - IQKeyboardManagerSwift
@@ -167,6 +170,7 @@ SPEC CHECKSUMS:
   Alamofire: 400275dd1c6d87d95a041861d2a59da4b520a203
   CocoaDebug: b38d31464b91a9775928f8667d114db07b136565
   CocoaLumberjack: e4ba3b414dfca8c1916c6303d37f63b3a95134c6
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   FunnyButton: f5748645b7f50f2caa157795d52925c0379978b9
   IQKeyboardCore: 250a88dfc713b2ecbe1dce250811d054fc016959
   IQKeyboardManagerSwift: 7f6a9a1e2285732d3ff5f485ff921215253ea77e
@@ -194,6 +198,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   TheRouter: 1c7801e4f3df9a2598088d7c3cf4d2f6d3779c51
 
-PODFILE CHECKSUM: 18ef13ef5ae1d48714b52b50cd7bf81403331205
+PODFILE CHECKSUM: 0f1b091c074b20fc621a17685bd51be2ffc26394
 
 COCOAPODS: 1.16.2

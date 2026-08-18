@@ -16,8 +16,18 @@ import NSObject_Rx
 import MJRefresh
 
 class HomeViewController: BaseTableViewController {
-    
     private let viewModel = HomeViewModel()
+    
+    //轮播图
+    private lazy var bannerView: HomeBannerView = {
+        let width = view.bounds.width
+        let bannerView = HomeBannerView(frame: CGRect(x: 0, y: 0, width: width, height: width / 16 * 9))
+        bannerView.onSelectBanner = { banner in
+            debugLog("点击了轮播图的\(banner)")
+            // pushToWebViewController(webLoadInfo: banner, isNeedShowCollection: false)
+        }
+        return bannerView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +40,7 @@ extension HomeViewController {
     private func setupUI() {
         title = "首页"
         tableView.estimatedRowHeight = 88
+        tableView.tableHeaderView = bannerView
     }
     
     private func binding() {
@@ -75,6 +86,11 @@ extension HomeViewController {
         //线路 7：控制刷新控件状态
         viewModel.outputs.refreshSubject
             .bind(to: tableView.rx.refreshAction)
+            .disposed(by: rx.disposeBag)
+        
+        /// 轮播图数据驱动
+        viewModel.outputs.banners
+            .bind(to: bannerView.rx.banners)
             .disposed(by: rx.disposeBag)
         
         /// 首次加载直接请求并由全局 HUD 反馈，不触发下拉动画。

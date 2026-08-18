@@ -33,7 +33,8 @@ target 'RxResearch' do
   pod 'SVProgressHUD'
   # Keyboard,弹不出来的原因是8.0.0之后拆分为不同的模块,需要分别进行配置
   pod 'IQKeyboardManagerSwift'
-  
+  # 轮播图
+  pod 'FSPagerView'
   
   
   
