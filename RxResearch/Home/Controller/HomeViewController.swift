@@ -1,7 +1,8 @@
 //
 //  HomeViewController.swift
 //  RxResearch
-//
+//  它本身不负责请求和处理数据，主要负责“接线”。可以把它理解为一个配电箱：UI 操作 → ViewModel 输入 ViewModel 输出 → UI
+//  binding() 里面一共有 7 条主要线路。
 //  Created by Kaiser on 2026/8/11.
 //
 
@@ -32,45 +33,46 @@ extension HomeViewController {
     }
     
     private func binding() {
-        //刷新头部
-        tableView.mj_header?.rx.refresh
-            .map { ScrollViewActionType.refresh }
-            .bind(onNext: viewModel.inputs.loadData)//onNext: 交给一个方法处理
+        //线路 1：下拉刷新
+        tableView.mj_header?.rx.refresh//用户下拉
+            .map { ScrollViewActionType.refresh }//转成 .refresh
+            .bind(onNext: viewModel.inputs.loadData)//onNext: 交给一个方法处理,调用loadData方法
             .disposed(by: rx.disposeBag)
         
-        //刷新尾部
-        tableView.mj_footer?.rx.refresh
-            .map { ScrollViewActionType.loadMore }
-            .bind(onNext: viewModel.inputs.loadData)
+        //线路 2：上拉加载更多
+        tableView.mj_footer?.rx.refresh //用户上拉到底部
+            .map { ScrollViewActionType.loadMore } //转成 .loadMore
+            .bind(onNext: viewModel.inputs.loadData)//
             .disposed(by: rx.disposeBag)
         
-        //处理错误图的点击重试
-        errorRetry
-            .map { ScrollViewActionType.refresh }
-            .bind(onNext: viewModel.inputs.loadData)
+        //线路 3：点击错误图重试
+        errorRetry //发出 Void
+            .map { ScrollViewActionType.refresh }//转成 .refresh
+            .bind(onNext: viewModel.inputs.loadData)//调用loadData方法
             .disposed(by: rx.disposeBag)
         
-        // 绑定数据
+        // 线路 4：数据展示
         viewModel.outputs.dataSource
-            .asDriver(onErrorJustReturn: [])
-            .drive(tableView.rx.items) { (tableView, _, info) in
+            .asDriver(onErrorJustReturn: [])//如果上游错误，则使用空数组
+            .drive(tableView.rx.items) { (tableView, _, info) in //Driver 适合 UI 绑定
                 let cell = tableView.dequeueReusableCell(withIdentifier: InfoCell.className) as! InfoCell
                 cell.info = info
                 return cell
             }
             .disposed(by: rx.disposeBag)
         
-        //监听数据是否为空
-        viewModel.outputs.dataSource
-            .map { $0.isEmpty }
+        //线路 5：判断空数据
+        viewModel.outputs.dataSource //同一个 dataSource 有两个消费者
+            .map { $0.isEmpty }//转换成 Bool，控制空数据页
             .bind(to: isEmptyRelay)//to 传递给另一个Observer
             .disposed(by: rx.disposeBag)
         
-        //控制错误图显示与隐藏
-        viewModel.outputs.networkError
-            .bind(to: rx.networkError)
+        //线路 6：控制网络错误图
+        viewModel.outputs.networkError//是否发送错误，是 HomeViewModel 决定的
+            .bind(to: rx.networkError)//不负责判断是否应该显示，只负责执行显示结果
             .disposed(by: rx.disposeBag)
         
+        //线路 7：控制刷新控件状态
         viewModel.outputs.refreshSubject
             .bind(to: tableView.rx.refreshAction)
             .disposed(by: rx.disposeBag)

@@ -20,17 +20,9 @@ import Moya
 class BaseViewModel {
 
     // MARK: - Public Properties
-
-    /// 输入接口前缀
-    ///
-    /// 用于 MVVM 模式中区分输入和输出，避免属性命名冲突
-    /// 使用方式：`viewModel.inputs.someMethod()`
+    // inputs：页面发送给 ViewModel 的命令
+    // outputs：ViewModel 输出给页面的状态
     var inputs: Self { self }
-
-    /// 输出接口前缀
-    ///
-    /// 用于 MVVM 模式中区分输入和输出，方便绑定 UI
-    /// 使用方式：`viewModel.outputs.someRelay.bind(...)`
     var outputs: Self { self }
     
     /// 网络请求错误流

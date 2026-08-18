@@ -6,15 +6,15 @@
 //
 
 import UIKit
-import RswiftResources
 
 import RxSwift
 import RxCocoa
 import RxGesture
-import Moya
-
-import SnapKit
 import NSObject_Rx
+
+import Moya
+import SnapKit
+import RswiftResources
 import SVProgressHUD
 
 #if DEBUG
@@ -24,6 +24,7 @@ import LifetimeTracker
 
 class BaseViewController: UIViewController {
 
+    //全屏网络错误图
     private lazy var errorImage: UIImageView = {
         let imageView = UIImageView(image: R.image.notFound())
         imageView.contentMode = .scaleAspectFit
@@ -32,7 +33,11 @@ class BaseViewController: UIViewController {
         return imageView
     }()
     
-    /// 错误异常重试
+    /*
+     错误异常重试
+     它表示一个用户事件：用户点击了错误图，请重试。
+     Void 表示这个事件只关心“发生了”，不携带具体数据。
+     */
     let errorRetry = PublishSubject<Void>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -48,15 +53,18 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 背景颜色
+        view.backgroundColor = .clear
 
-        /// 最简单的设置统一返回按钮的方法,所有的控制器继承该基类即可
+        // 设置统一返回按钮的方法,所有的控制器继承该基类即可
         let leftBarButtonItem = UIBarButtonItem(image: R.image.back(), style: .plain, target: self, action: #selector(leftBarButtonItemAction(_:)))
         navigationItem.leftBarButtonItem = (navigationController?.viewControllers.count ?? 0) > 1 ? leftBarButtonItem : nil
         navigationItem.hidesBackButton = true
         
-        view.backgroundColor = .clear
-        
+        //导航栏样式
         iOS15NavigationBarClear()
+        //abBar 样式
         iOS15TabBarClear()
         
         //只会在深色/浅色模式变化时更新 SVProgressHUD 样式，不会因其他无关 trait 变化重复执行
@@ -78,7 +86,7 @@ class BaseViewController: UIViewController {
 
 // MARK: - 网络请求错误页面的配置
 extension BaseViewController {
-    
+    //创建错误视图
     private func setupErrorImage() {
         view.addSubview(errorImage)
         errorImage.snp.makeConstraints { make in
@@ -86,11 +94,12 @@ extension BaseViewController {
         }
         errorImage.isHidden = true
         
-        errorImage.rx.tapGesture()
-            .when(.recognized)
-            .map { _ in }
-            .bind(to: errorRetry)
-            .disposed(by: rx.disposeBag)
+        //点击错误图重试
+        errorImage.rx.tapGesture()//监听图片手势
+            .when(.recognized)//只保留识别成功的点击事件
+            .map { _ in }//把手势对象转成 Void
+            .bind(to: errorRetry)//把点击事件发送给 errorRetry
+            .disposed(by: rx.disposeBag)//控制器销毁时取消监听
     }
     
     func showErrorImage() {
@@ -159,13 +168,23 @@ extension BaseViewController {
 }
 
 // MARK: - 绑定
-extension Reactive where Base: BaseViewController {
+/*
+ 这是 RxCocoa 的 Binder 自定义 UI 绑定属性，专门给你的 BaseViewController 做 Rx 绑定：数据流发送 MoyaError?，自动控制页面错误占位图显示 / 隐藏。
+ where Base: BaseViewController 只有 BaseViewController 以及它的子类，才会拥有 .rx.networkError 这个属性
+ */
+extension Reactive where Base: BaseViewController {//
     /// 显示网络错误
     var networkError: Binder<MoyaError?> {
+        /*
+         base：就是当前的 BaseViewController 实例，对应 vc。
+         回调闭包参数：
+         第一个：vc = 当前控制器实例
+         第二个：error = 上游 Observable 传过来的值，类型 MoyaError?
+         */
         return Binder(base) { vc, error in
-            if let _ = error {
+            if let _ = error {//收到 MoyaError → 展示错误图
                 vc.showErrorImage()
-            } else {
+            } else {//收到 nil → 隐藏错误图
                 vc.hiddenErrorImage()
             }
         }

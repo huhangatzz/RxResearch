@@ -423,11 +423,11 @@
 		41E23E0A302ACA8A004D96C7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
-				413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */,
 				4197E32A302C1A8400A4A9FA /* BaseViewController.swift */,
 				4197E32C302C22ED00A4A9FA /* BaseTableViewController.swift */,
 				4197E369302D595500A4A9FA /* BaseViewModel.swift */,
+				413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */,
+				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";

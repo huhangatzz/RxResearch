@@ -1,7 +1,7 @@
 //
 //  InfoCell.swift
 //  RxResearch
-//
+//  InfoCell 不参与 Rx 请求。纯 UI 渲染对象
 //  Created by Kaiser on 2026/8/17.
 //
 

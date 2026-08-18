@@ -60,8 +60,10 @@ extension Reactive where Base: MJRefreshComponent {
     
     //刷新
     var refresh: ControlEvent<Void> {
-        let source = state.filter { $0 == .refreshing }
-            .map({_ in () }).asObservable()
+        let source = state
+            .filter { $0 == .refreshing }
+            .map({_ in () })//转Void事件
+            .asObservable()
         return ControlEvent.init(events: source)
     }
     

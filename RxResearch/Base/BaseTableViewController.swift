@@ -1,7 +1,7 @@
 //
 //  BaseTableViewController.swift
 //  RxResearch
-//
+//  增加列表页面通用能力
 //  Created by Kaiser on 2026/8/12.
 //
 
@@ -109,6 +109,7 @@ extension BaseTableViewController {
 // MARK: - UITableViewDelegate
 extension BaseTableViewController: UITableViewDelegate {}
 
+//配置空数据占位图
 // MARK: - EmptyDataSetSource
 extension BaseTableViewController: EmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
