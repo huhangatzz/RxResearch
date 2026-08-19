@@ -19,6 +19,7 @@ class ResponseInterceptorPlugin: PluginType {
                let message = dictionary["errorMsg"] as? String,
                message.isNotEmpty {
                 
+                //出现错误
                 SVProgressHUD.showText(message)
                 
                 /// 注意,这里我自认为是statusCode导致的错误

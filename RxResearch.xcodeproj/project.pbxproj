@@ -93,6 +93,7 @@
 		41C626CE30358C2500602223 /* HotKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626CD30358C2500602223 /* HotKeyViewModel.swift */; };
 		41C626D330358C7500602223 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626D230358C7500602223 /* HotKey.swift */; };
 		41C626D8303596A400602223 /* BaseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626D7303596A400602223 /* BaseRequestable.swift */; };
+		41C626E030359E5100602223 /* ActivityHUDPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626DF30359E5100602223 /* ActivityHUDPlugin.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -196,6 +197,7 @@
 		41C626CD30358C2500602223 /* HotKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyViewModel.swift; sourceTree = "<group>"; };
 		41C626D230358C7500602223 /* HotKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
 		41C626D7303596A400602223 /* BaseRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestable.swift; sourceTree = "<group>"; };
+		41C626DF30359E5100602223 /* ActivityHUDPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHUDPlugin.swift; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 		41C625C13032BDAE00602223 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				41C626DF30359E5100602223 /* ActivityHUDPlugin.swift */,
 				41C625C43032BDC100602223 /* ResponseInterceptorPlugin.swift */,
 				41C625CE3032BFAA00602223 /* ResponseCachePlugin.swift */,
 			);
@@ -897,6 +900,7 @@
 				41C625E03032F48600602223 /* String+Extension.swift in Sources */,
 				41C6263F3034477D00602223 /* WebViewModel.swift in Sources */,
 				41C626D330358C7500602223 /* HotKey.swift in Sources */,
+				41C626E030359E5100602223 /* ActivityHUDPlugin.swift in Sources */,
 				4197E374302D6F9700A4A9FA /* HomeViewModel.swift in Sources */,
 				41C625C53032BDC100602223 /* ResponseInterceptorPlugin.swift in Sources */,
 				41C626B830354F8E00602223 /* KeyRouter.swift in Sources */,
