@@ -89,6 +89,10 @@
 		41C626A130353C7900602223 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626A030353C7900602223 /* Theme.swift */; };
 		41C626B830354F8E00602223 /* KeyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626B730354F8E00602223 /* KeyRouter.swift */; };
 		41C626BE3035574F00602223 /* PollingNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626BD3035574F00602223 /* PollingNetworkRequester.swift */; };
+		41C626C53035880F00602223 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626C43035880F00602223 /* SearchResultController.swift */; };
+		41C626CE30358C2500602223 /* HotKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626CD30358C2500602223 /* HotKeyViewModel.swift */; };
+		41C626D330358C7500602223 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626D230358C7500602223 /* HotKey.swift */; };
+		41C626D8303596A400602223 /* BaseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626D7303596A400602223 /* BaseRequestable.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -188,6 +192,10 @@
 		41C626A030353C7900602223 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		41C626B730354F8E00602223 /* KeyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyRouter.swift; sourceTree = "<group>"; };
 		41C626BD3035574F00602223 /* PollingNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingNetworkRequester.swift; sourceTree = "<group>"; };
+		41C626C43035880F00602223 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
+		41C626CD30358C2500602223 /* HotKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyViewModel.swift; sourceTree = "<group>"; };
+		41C626D230358C7500602223 /* HotKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
+		41C626D7303596A400602223 /* BaseRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestable.swift; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -437,6 +445,7 @@
 				41C6259C3032AECF00602223 /* Page.swift */,
 				41C6258C3032A93F00602223 /* WebLoadInfo.swift */,
 				41C6265830344A1700602223 /* AccountInfo.swift */,
+				41C626D230358C7500602223 /* HotKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -542,6 +551,7 @@
 				413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */,
 				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
 				41C626A030353C7900602223 /* Theme.swift */,
+				41C626D7303596A400602223 /* BaseRequestable.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -562,6 +572,7 @@
 			children = (
 				41E23E1F302AF491004D96C7 /* HomeViewController.swift */,
 				41C6269B30353B8F00602223 /* HotKeyFlexBoxViewController.swift */,
+				41C626C43035880F00602223 /* SearchResultController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -587,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				4197E373302D6F9700A4A9FA /* HomeViewModel.swift */,
+				41C626CD30358C2500602223 /* HotKeyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -729,7 +741,7 @@
 			mainGroup = 410E4FFD30295C88007F7567;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R.swift" */,
+				413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 410E500730295C88007F7567 /* Products */;
@@ -764,9 +776,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RxResearch/Pods-RxResearch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RxResearch/Pods-RxResearch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -802,6 +818,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C626C53035880F00602223 /* SearchResultController.swift in Sources */,
 				41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */,
 				411C91D8302983C300625E82 /* AccountManageable.swift in Sources */,
 				41C625D43032E58800602223 /* MockService.swift in Sources */,
@@ -810,6 +827,7 @@
 				411C91CC30297C9000625E82 /* CustomLogFormatter.swift in Sources */,
 				411C91DD3029C03000625E82 /* AppDelegate+ScreenCapture.swift in Sources */,
 				411C91ED3029D68B00625E82 /* AppDelegate+Debug.swift in Sources */,
+				41C626CE30358C2500602223 /* HotKeyViewModel.swift in Sources */,
 				411C91D23029824A00625E82 /* AppDelegate+NetworkConfig.swift in Sources */,
 				4197E32B302C1A8400A4A9FA /* BaseViewController.swift in Sources */,
 				410E503C30295ED7007F7567 /* AppDelegate.swift in Sources */,
@@ -865,6 +883,7 @@
 				41C625923032AA5400602223 /* Banner.swift in Sources */,
 				4197E34A302C57CA00A4A9FA /* ExBehaviorRelay.swift in Sources */,
 				41C6263A3034474600602223 /* WeakScriptMessageDelegate.swift in Sources */,
+				41C626D8303596A400602223 /* BaseRequestable.swift in Sources */,
 				41C625CA3032BE4700602223 /* HUD.swift in Sources */,
 				41C6258D3032A93F00602223 /* WebLoadInfo.swift in Sources */,
 				410E503E30295ED7007F7567 /* MainTabBarController.swift in Sources */,
@@ -877,6 +896,7 @@
 				4197E33D302C532B00A4A9FA /* EmptyDataSetSource.swift in Sources */,
 				41C625E03032F48600602223 /* String+Extension.swift in Sources */,
 				41C6263F3034477D00602223 /* WebViewModel.swift in Sources */,
+				41C626D330358C7500602223 /* HotKey.swift in Sources */,
 				4197E374302D6F9700A4A9FA /* HomeViewModel.swift in Sources */,
 				41C625C53032BDC100602223 /* ResponseInterceptorPlugin.swift in Sources */,
 				41C626B830354F8E00602223 /* KeyRouter.swift in Sources */,
@@ -893,7 +913,7 @@
 /* Begin PBXTargetDependency section */
 		413AD829302B02EC00771C91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 413AD828302B02EC00771C91 /* plugin:RswiftGenerateInternalResources */;
+			productRef = 413AD828302B02EC00771C91 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1137,7 +1157,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R.swift" */ = {
+		413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift";
 			requirement = {
@@ -1145,7 +1165,7 @@
 				kind = branch;
 			};
 		};
-		413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R.swift" */ = {
+		413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift";
 			requirement = {
@@ -1153,7 +1173,7 @@
 				minimumVersion = 7.8.0;
 			};
 		};
-		41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R.swift" */ = {
+		41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift";
 			requirement = {
@@ -1166,21 +1186,21 @@
 /* Begin XCSwiftPackageProductDependency section */
 		413AD823302B020000771C91 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R.swift" */;
+			package = 413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R" */;
 			productName = RswiftLibrary;
 		};
 		413AD826302B02DA00771C91 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R.swift" */;
+			package = 413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */;
 			productName = RswiftLibrary;
 		};
-		413AD828302B02EC00771C91 /* plugin:RswiftGenerateInternalResources */ = {
+		413AD828302B02EC00771C91 /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		41E23E2B302AFB84004D96C7 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R.swift" */;
+			package = 41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R" */;
 			productName = RswiftLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */

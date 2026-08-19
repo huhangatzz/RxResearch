@@ -24,14 +24,8 @@ import LifetimeTracker
 
 class BaseViewController: UIViewController {
 
-    //全屏网络错误图
-    private lazy var errorImage: UIImageView = {
-        let imageView = UIImageView(image: R.image.notFound())
-        imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = true
-        imageView.backgroundColor = .playAndroidBackground
-        return imageView
-    }()
+    /// 全屏网络错误图。首次需要展示时才创建，避免每个页面启动时解码图片。
+    private var errorImage: UIImageView?
     
     /*
      错误异常重试
@@ -72,7 +66,6 @@ class BaseViewController: UIViewController {
             SVProgressHUD.styleSetting()
         }
         
-        setupErrorImage()
     }
     
     @objc func leftBarButtonItemAction(_ item: UIBarButtonItem) {
@@ -94,28 +87,41 @@ class BaseViewController: UIViewController {
 
 // MARK: - 网络请求错误页面的配置
 extension BaseViewController {
-    //创建错误视图
-    private func setupErrorImage() {
+    /// 首次展示网络错误时才创建视图、加载图片并绑定重试事件。
+    private func setupErrorImageIfNeeded() -> UIImageView {
+        if let errorImage {
+            return errorImage
+        }
+
+        let errorImage = UIImageView(image: R.image.notFound())
+        errorImage.contentMode = .scaleAspectFit
+        errorImage.isUserInteractionEnabled = true
+        errorImage.backgroundColor = .playAndroidBackground
+
         view.addSubview(errorImage)
         errorImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        errorImage.isHidden = true
-        
+
         //点击错误图重试 RxGesture
         errorImage.rx.tapGesture()//监听图片手势
             .when(.recognized)//只保留识别成功的点击事件
             .map { _ in }//把手势对象事件转成 Void事件
             .bind(to: errorRetry)//把点击事件发送给 errorRetry
             .disposed(by: rx.disposeBag)//控制器销毁时取消监听
+
+        self.errorImage = errorImage
+        return errorImage
     }
-    
+
     func showErrorImage() {
+        let errorImage = setupErrorImageIfNeeded()
         errorImage.isHidden = false
         view.bringSubviewToFront(errorImage)
     }
-    
+
     func hiddenErrorImage() {
+        guard let errorImage else { return }
         errorImage.isHidden = true
         view.sendSubviewToBack(errorImage)
     }

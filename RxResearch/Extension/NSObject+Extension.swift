@@ -30,12 +30,12 @@ protocol DeinitPrintable {
 extension DeinitPrintable where Self: NSObject {
     func deinitPrint() {
         #if DEBUG
-        print("\(className)被销毁了")
+        print("⚠️\(className)被销毁了")
         #endif
     }
     
     func deinitDDLog() {
-        DDLogDebug("\(className)被销毁了")
+        DDLogDebug("⚠️\(className)被销毁了")
     }
 }
 

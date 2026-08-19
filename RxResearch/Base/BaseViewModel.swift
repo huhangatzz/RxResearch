@@ -54,7 +54,7 @@ class BaseViewModel {
     
     /// 析构函数，输出调试日志
     deinit {
-        debugLog("\(classNameWithoutNamespace)被销毁了")
+        debugLog("⚠️\(classNameWithoutNamespace)被销毁了")
     }
 }
 

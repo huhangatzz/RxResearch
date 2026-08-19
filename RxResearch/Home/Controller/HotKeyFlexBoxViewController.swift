@@ -6,10 +6,14 @@
 //
 
 import UIKit
+
 import RxSwift
 import RxSwiftExt
 import RxCocoa
+import NSObject_Rx
+
 import TheRouter
+import Moya
 
 class HotKeyFlexBoxViewController: BaseViewController {
 
@@ -35,15 +39,79 @@ class HotKeyFlexBoxViewController: BaseViewController {
         return textField
     }()
     
+    private lazy var rootFlexContainer = UIView()
+    
+    //初始化轮询接口
+    let requester = PollingNetworkRequester(
+        interval: .seconds(1),
+        maxPollingTime: .seconds(20)) {
+        return Repository.requestHotKey()
+    }
+    
+    //模型
+    let viewModel = HotKeyViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+        binding()
+        polling()
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .playAndroidBackground
-        
+        view.addSubview(rootFlexContainer)
         navigationItem.titleView = textField
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
         debugLog("HotKeyFlexBoxViewController 路由参数 upTestContext：\(upTestContext)")
+    }
+    
+    private func binding() {
+        //点击键盘return
+        textField.rx.controlEvent([.editingDidEndOnExit])
+            .asObservable()
+            .subscribe { [weak self] _ in
+                guard let self, let keyword = self.textField.text, keyword.isNotEmpty else { return }
+                self.pushToSearchResultController(keyword: keyword)
+            }
+            .disposed(by: rx.disposeBag)
+        
+        //点击导航栏右按钮
+        navigationItem.rightBarButtonItem?.rx.tap
+            .map { [weak self] in self?.textField.text }
+            .compactMap { $0 }
+            .subscribe { [weak self] in
+                debugLog("onNext eventt: \($0)")
+                self?.pushToSearchResultController(keyword: $0)
+            }
+            .disposed(by: rx.disposeBag)
+        
+        //导航栏右按钮是否能点击
+        textField.rx.text.orEmpty
+            .map { $0.isNotEmpty }
+            .bind(to: navigationItem.rightBarButtonItem!.rx.isEnabled)
+            .disposed(by: rx.disposeBag)
+        
+    }
+    
+    private func polling() {
+        requester.startListening()
+        requester.onPollingEnd = {reason in
+            switch reason {
+            case .success:
+                print("网络请求成功，轮询结束")
+            case .failure(let error):
+                print("网络请求失败，轮询结束，错误：\(error)")
+            case .timeout:
+                print("轮询超时结束")
+            }
+        }
+        requester.action()
+    }
+    
+    private func pushToSearchResultController(keyword: String) {
+        let vc = SearchResultController(keyword: keyword)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

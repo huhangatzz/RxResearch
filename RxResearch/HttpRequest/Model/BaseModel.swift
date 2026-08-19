@@ -7,6 +7,7 @@
 
 import Foundation
 
+//所有接口公共模型
 struct BaseModel<T: Codable>: Codable {
     let data: T?
     let errorCode: Int?

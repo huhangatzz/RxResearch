@@ -187,7 +187,7 @@ private extension HomeViewModel {
     /// - Returns: Single<BaseModel<Page<Info>>>
     func requestData(page: Int) -> Single<BaseModel<Page<Info>>> {
         homeProvider.rx.request(HomeService.normalArticle(page))
-            .map(BaseModel<Page<Info>>.self)
+            .map(BaseModel<Page<Info>>.self)//做映射
     }
     
     /// 置顶文章
