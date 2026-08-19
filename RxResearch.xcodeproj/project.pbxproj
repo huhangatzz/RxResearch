@@ -85,6 +85,9 @@
 		41C6267B30344CE700602223 /* open.js in Resources */ = {isa = PBXBuildFile; fileRef = 41C6267A30344CE700602223 /* open.js */; };
 		41C6268230344E0100602223 /* MyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6268130344E0100602223 /* MyService.swift */; };
 		41C6268730344F9300602223 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6268630344F9300602223 /* Dictionary+Extension.swift */; };
+		41C6269C30353B8F00602223 /* HotKeyFlexBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6269B30353B8F00602223 /* HotKeyFlexBoxViewController.swift */; };
+		41C626A130353C7900602223 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626A030353C7900602223 /* Theme.swift */; };
+		41C626B830354F8E00602223 /* KeyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626B730354F8E00602223 /* KeyRouter.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -180,6 +183,9 @@
 		41C6267A30344CE700602223 /* open.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = open.js; sourceTree = "<group>"; };
 		41C6268130344E0100602223 /* MyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyService.swift; sourceTree = "<group>"; };
 		41C6268630344F9300602223 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		41C6269B30353B8F00602223 /* HotKeyFlexBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyFlexBoxViewController.swift; sourceTree = "<group>"; };
+		41C626A030353C7900602223 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		41C626B730354F8E00602223 /* KeyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyRouter.swift; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -342,6 +348,7 @@
 				4197E349302C57CA00A4A9FA /* ExBehaviorRelay.swift */,
 				4197E36E302D66B600A4A9FA /* TypeNameProtocol.swift */,
 				41C625C93032BE4700602223 /* HUD.swift */,
+				41C626B730354F8E00602223 /* KeyRouter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -531,6 +538,7 @@
 				4197E369302D595500A4A9FA /* BaseViewModel.swift */,
 				413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */,
 				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
+				41C626A030353C7900602223 /* Theme.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -550,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				41E23E1F302AF491004D96C7 /* HomeViewController.swift */,
+				41C6269B30353B8F00602223 /* HotKeyFlexBoxViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -815,6 +824,7 @@
 				411C91EF3029D87A00625E82 /* UIApplication+Extension.swift in Sources */,
 				413AD837302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift in Sources */,
 				4197E32D302C22ED00A4A9FA /* BaseTableViewController.swift in Sources */,
+				41C6269C30353B8F00602223 /* HotKeyFlexBoxViewController.swift in Sources */,
 				41C625973032AE0400602223 /* BaseModel.swift in Sources */,
 				411C91BF30296FDC00625E82 /* NetworkActivityLogger.swift in Sources */,
 				411C91D63029838D00625E82 /* AccountManager.swift in Sources */,
@@ -847,6 +857,7 @@
 				411C91C3302972E000625E82 /* Collection+Extension.swift in Sources */,
 				41C6259D3032AECF00602223 /* Page.swift in Sources */,
 				411C91E93029C95200625E82 /* Constant.swift in Sources */,
+				41C626A130353C7900602223 /* Theme.swift in Sources */,
 				41C6267430344C3A00602223 /* OtherApp.swift in Sources */,
 				411C91D0302980C200625E82 /* LogUtils.swift in Sources */,
 				4197E363302C709800A4A9FA /* UINavigationController+Extension.swift in Sources */,
@@ -868,6 +879,7 @@
 				41C6263F3034477D00602223 /* WebViewModel.swift in Sources */,
 				4197E374302D6F9700A4A9FA /* HomeViewModel.swift in Sources */,
 				41C625C53032BDC100602223 /* ResponseInterceptorPlugin.swift in Sources */,
+				41C626B830354F8E00602223 /* KeyRouter.swift in Sources */,
 				4197E36A302D595500A4A9FA /* BaseViewModel.swift in Sources */,
 				4197E33E302C532B00A4A9FA /* EmptyDataSetDelegate.swift in Sources */,
 				4197E33F302C532B00A4A9FA /* EmptyDataSetView.swift in Sources */,
@@ -908,6 +920,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7V6ZLVLSAB;
 				ENABLE_BITCODE = "$(inherited)";
+				ENABLE_DEBUG_DYLIB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxResearch/Info.plist;
@@ -949,6 +962,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7V6ZLVLSAB;
 				ENABLE_BITCODE = "$(inherited)";
+				ENABLE_DEBUG_DYLIB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxResearch/Info.plist;

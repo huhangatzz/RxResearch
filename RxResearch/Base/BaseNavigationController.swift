@@ -13,6 +13,13 @@ class BaseNavigationController: UINavigationController {
         interactivePopGestureRecognizer?.delegate = self
         delegate = self
     }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if (self.children.count > 0) {
+            viewController.hidesBottomBarWhenPushed = true
+        }
+        super.pushViewController(viewController, animated: animated)
+    }
 }
 
 //实现协议都写在扩展中

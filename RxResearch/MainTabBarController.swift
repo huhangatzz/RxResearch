@@ -41,7 +41,8 @@ class MainTabBarController: UITabBarController {
         subVC.tabBarItem.image = UIImage(named: type.imageName)
         subVC.tabBarItem.selectedImage = UIImage(named: type.selectImageName)
         subVC.title = type.title
-        addChild(subVC)
+        let nav = BaseNavigationController(rootViewController: subVC)
+        addChild(nav)
     }
 }
 
@@ -68,5 +69,4 @@ extension MainTabBarController {
         guard let currentVC = selectedViewController as? TabBarVCChildrenRefreshProtocol else { return }
         currentVC.dataRefresh()
     }
-    
 }

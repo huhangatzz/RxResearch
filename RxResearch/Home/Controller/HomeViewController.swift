@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  RxResearch
 //  它本身不负责请求和处理数据，主要负责“接线”。可以把它理解为一个配电箱：UI 操作 → ViewModel 输入 ViewModel 输出 → UI
-//  binding() 里面一共有 7 条主要线路。
+//  binding() 里面一共有 9 条主要线路。
 //  Created by Kaiser on 2026/8/11.
 //
 
@@ -15,9 +15,13 @@ import NSObject_Rx
 
 import MJRefresh
 import SVProgressHUD
+import TheRouter
 
 class HomeViewController: BaseTableViewController {
     private let viewModel = HomeViewModel()
+    
+    //搜索按钮
+    private lazy var searchButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
     
     //轮播图
     private lazy var bannerView: HomeBannerView = {
@@ -31,6 +35,8 @@ class HomeViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = searchButtonItem
+        
         setupUI()
         binding()
     }
@@ -90,7 +96,7 @@ extension HomeViewController {
         
         //线路 8：获取cell中的模型
         tableView.rx.modelSelected(Info.self)
-            .subscribe(onNext: { [weak self] model in
+            .bind(onNext: { [weak self] model in
                 debugLog("模型为:\(model)")
                 if model.id == 24742 {
                     if OtherApp.qq.isCanOpen {
@@ -113,6 +119,14 @@ extension HomeViewController {
         viewModel.outputs.banners
             .bind(to: bannerView.rx.banners)
             .disposed(by: rx.disposeBag)
+        
+        //线路10: 点击搜索按钮
+        navigationItem.rightBarButtonItem?.rx.tap.bind { _ in
+            Haptics.warning.feedback()
+            //使用路由跳转
+            TheRouter.openURL(hotKeyFlexBox,userInfo: ["upTestContext": "胡航最帅"])
+        }
+        .disposed(by: rx.disposeBag)
         
         /// 首次加载直接请求并由全局 HUD 反馈，不触发下拉动画。
         viewModel.inputs.loadData(actionType: .refresh)
