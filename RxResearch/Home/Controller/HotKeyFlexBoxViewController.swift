@@ -15,11 +15,33 @@ class HotKeyFlexBoxViewController: BaseViewController {
 
     /// TheRouter 会通过 Objective-C KVC 将 userInfo 中的同名字段注入进来。
     @objc dynamic var upTestContext: String = ""
+    
+    private lazy var textField: UITextField = {
+        let textField = UITextField(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 34))
+        textField.textColor = .black
+        textField.layer.borderWidth = 0.5
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.cornerRadius = 17
+        textField.layer.masksToBounds = true
+        textField.backgroundColor = .white
+        textField.returnKeyType = .search
+        textField.font = UIFont.systemFont(ofSize: 15)
+        
+        let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+        textField.leftView = emptyView
+        textField.rightView = emptyView
+        textField.leftViewMode = .always
+        textField.rightViewMode = .always
+        return textField
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .playAndroidBackground
+        
+        navigationItem.titleView = textField
 
         debugLog("HotKeyFlexBoxViewController 路由参数 upTestContext：\(upTestContext)")
     }

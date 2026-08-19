@@ -88,6 +88,7 @@
 		41C6269C30353B8F00602223 /* HotKeyFlexBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6269B30353B8F00602223 /* HotKeyFlexBoxViewController.swift */; };
 		41C626A130353C7900602223 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626A030353C7900602223 /* Theme.swift */; };
 		41C626B830354F8E00602223 /* KeyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626B730354F8E00602223 /* KeyRouter.swift */; };
+		41C626BE3035574F00602223 /* PollingNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626BD3035574F00602223 /* PollingNetworkRequester.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -186,6 +187,7 @@
 		41C6269B30353B8F00602223 /* HotKeyFlexBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyFlexBoxViewController.swift; sourceTree = "<group>"; };
 		41C626A030353C7900602223 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		41C626B730354F8E00602223 /* KeyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyRouter.swift; sourceTree = "<group>"; };
+		41C626BD3035574F00602223 /* PollingNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingNetworkRequester.swift; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				4197E36E302D66B600A4A9FA /* TypeNameProtocol.swift */,
 				41C625C93032BE4700602223 /* HUD.swift */,
 				41C626B730354F8E00602223 /* KeyRouter.swift */,
+				41C626BD3035574F00602223 /* PollingNetworkRequester.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -726,7 +729,7 @@
 			mainGroup = 410E4FFD30295C88007F7567;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */,
+				413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R.swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 410E500730295C88007F7567 /* Products */;
@@ -761,13 +764,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RxResearch/Pods-RxResearch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RxResearch/Pods-RxResearch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -818,6 +817,7 @@
 				41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */,
 				410E503D30295ED7007F7567 /* SceneDelegate.swift in Sources */,
 				411C91B83029657A00625E82 /* AppDelegate+Extension.swift in Sources */,
+				41C626BE3035574F00602223 /* PollingNetworkRequester.swift in Sources */,
 				41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */,
 				41C625A63032B31E00602223 /* HomeService.swift in Sources */,
 				411C91DB3029A23400625E82 /* NetworkMonitor.swift in Sources */,
@@ -893,7 +893,7 @@
 /* Begin PBXTargetDependency section */
 		413AD829302B02EC00771C91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 413AD828302B02EC00771C91 /* RswiftGenerateInternalResources */;
+			productRef = 413AD828302B02EC00771C91 /* plugin:RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1137,7 +1137,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R" */ = {
+		413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift";
 			requirement = {
@@ -1145,7 +1145,7 @@
 				kind = branch;
 			};
 		};
-		413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */ = {
+		413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift";
 			requirement = {
@@ -1153,7 +1153,7 @@
 				minimumVersion = 7.8.0;
 			};
 		};
-		41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R" */ = {
+		41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift";
 			requirement = {
@@ -1166,21 +1166,21 @@
 /* Begin XCSwiftPackageProductDependency section */
 		413AD823302B020000771C91 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R" */;
+			package = 413AD822302B020000771C91 /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = RswiftLibrary;
 		};
 		413AD826302B02DA00771C91 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R" */;
+			package = 413AD825302B02DA00771C91 /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = RswiftLibrary;
 		};
-		413AD828302B02EC00771C91 /* RswiftGenerateInternalResources */ = {
+		413AD828302B02EC00771C91 /* plugin:RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		41E23E2B302AFB84004D96C7 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R" */;
+			package = 41E23E2A302AFB84004D96C7 /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = RswiftLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */

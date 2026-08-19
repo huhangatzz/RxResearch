@@ -15,8 +15,7 @@ extension AppDelegate {
     }
 
     // MARK: - 方案五：混淆技术
-
     private func loadObfuscatedKeys() {
-        print("aliapyKey:\(aliapyKey) wechatKey:\(wechatKey) geTuiKey:\(geTuiKey)")
+        print("aliapyKey:\(aliapyKey) wechatKey:\(wechatKey) geTuiKey:\(geTuiKey) gaodeKey: \(gaodeKey)")
     }
 }

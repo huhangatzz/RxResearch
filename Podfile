@@ -17,16 +17,18 @@ target 'RxResearch' do
   # 添加手势与调用会更加简单
   # RxGesture 是 RxSwiftCommunity 的库，把系统 UIGestureRecognizer（点击、长按、拖拽、捏合、滑动）封装成响应式 Observable 流，专门给 RxSwift/RxCocoa 项目用，解决原生手势写大量 delegate/selector 命令式代码的痛点
   pod 'RxGesture'
-  pod 'Moya/RxSwift'
   
+  # 网络
+  pod 'Moya/RxSwift'
   # Image
   pod 'Kingfisher'
   
-  # 考虑使用货拉拉的TheRouter
-  pod 'TheRouter'
-  
+  # 两种布局方式
   # Auto Layout
   pod 'SnapKit'
+  # Yoga Layout
+  pod 'FlexLayout'
+  pod 'PinLayout'
   
   # UI
   pod 'MJRefresh'
@@ -38,15 +40,17 @@ target 'RxResearch' do
   # 文本轮播
   pod 'MarqueeLabel'
   
-
+  # R函数
+  # 不使用pod 'R.swift'方式, 使用Swift Package方式引入 https://github.com/mac-cain13/R.swift
+  # 使用步骤: TARGETS -> Build Phases -> Run Build Tool Plug‑ins -> RswiftGenerateInternalResources(Rswift)
+  # 左侧目录最顶部蓝色图标右键找到 RswiftModeifyXcodePackages -> run
+  # 在使用的地方导入 import RswiftResources即可
+  
   # web缓存+离线缓存
   pod 'JWNetAutoCache'
   
-  # R函数
-  # 不使用pod方式,使用Swift Package方式引入 https://github.com/mac-cain13/R.swift
-  # 使用步骤: TARGETS -> Build Phases -> Run Build Tool Plug‑ins -> RswiftGenerateInternalResources(Rswift)
-  # 左侧目录最顶部蓝色图标右键找到 RswiftModeifyXcodePackages -> run即可
-  # pod 'R.swift'
+  # 考虑使用货拉拉的TheRouter
+  pod 'TheRouter'
   
   # 日志打印与跟踪
   pod 'CocoaLumberjack/Swift'
@@ -117,6 +121,7 @@ post_install do |installer|
     end
   end
 
+  # 秘钥混淆使用
   # CocoaPods Keys 2.3.1 generates an NSString-backed lookup table. If a key
   # contains multi-byte UTF-8 data, characterAtIndex: counts Unicode characters
   # while the generated indexes are byte offsets, which can crash at runtime.
@@ -143,14 +148,17 @@ post_install do |installer|
   end
 end
 
-# 秘钥操作
-# pod keys set xxx ""
-# 移除其中某一个key需要时有: pod keys rm xxx
+# 秘钥混淆操作
+# pod keys set xx_Key "45e6583xxx"
+# 移除其中某一个key需要时有: pod keys rm xx_Key
+# pod install即可
 plugin 'cocoapods-keys', {
   :project => "RxResearch",
   :keys => [
     "Aliapy_Key",
     "Wechat_Key",
-    "GeTuiAppSecret_Key"
+    "GeTuiAppSecret_Key",
+    "Gaode_Key"
   ]
 }
+
