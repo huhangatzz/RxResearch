@@ -10,6 +10,7 @@ import SVProgressHUD
 extension SVProgressHUD: HUD {
     
     static func beginLoading() {
+        SVProgressHUD.setDefaultMaskType(.clear)
         SVProgressHUD.show()
     }
     

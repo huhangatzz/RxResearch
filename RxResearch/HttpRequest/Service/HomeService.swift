@@ -67,7 +67,8 @@ extension HomeService: TargetType {
     var headers: [String : String]? {
         switch self {
         case .banner, .topArticle:
-            // 非关键请求不单独控制全局 HUD，避免多个并发请求互相干扰加载状态。
+            // 非关键请求和轮询中的单次请求不单独控制全局 HUD，
+            // 避免多个并发请求或高频轮询反复显示、关闭 HUD。
             return ["showLoading": "false"]
         default:
             return nil

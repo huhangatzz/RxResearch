@@ -76,13 +76,13 @@ class PollingNetworkRequester {
     
     //结束监听
     func stop() {
-        SVProgressHUD.dismiss()
+        SVProgressHUD.stopLoading()
         disposeBag = DisposeBag()
     }
 
     private func pollingObservable() -> Observable<PollingEndReason> {
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.show()
+        // 使用透明遮罩：轮询期间阻止重复操作，但不显示黑色背景。
+        SVProgressHUD.beginLoading()
 
         // 用 PublishSubject 作为事件出口
         let resultSubject = PublishSubject<PollingEndReason>()
@@ -137,7 +137,7 @@ class PollingNetworkRequester {
 
         return resultSubject
             .do(onDispose: {
-                SVProgressHUD.dismiss()
+                SVProgressHUD.stopLoading()
             })
     }
 }

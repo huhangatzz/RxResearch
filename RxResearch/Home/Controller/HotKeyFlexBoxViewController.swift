@@ -14,6 +14,7 @@ import NSObject_Rx
 
 import TheRouter
 import Moya
+import FlexLayout
 
 class HotKeyFlexBoxViewController: BaseViewController {
 
@@ -41,12 +42,12 @@ class HotKeyFlexBoxViewController: BaseViewController {
     
     private lazy var rootFlexContainer = UIView()
     
-    //初始化轮询接口
-    let requester = PollingNetworkRequester(
-        interval: .seconds(1),
-        maxPollingTime: .seconds(20)) {
-        return Repository.requestHotKey()
-    }
+    //初始化轮询接口 (测试轮询控件)
+//    let requester = PollingNetworkRequester(
+//        interval: .seconds(1),
+//        maxPollingTime: .seconds(20)) {
+//        return Repository.requestHotKey()
+//    }
     
     //模型
     let viewModel = HotKeyViewModel()
@@ -55,7 +56,7 @@ class HotKeyFlexBoxViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         binding()
-        polling()
+        //polling()
     }
     
     private func setupUI() {
@@ -92,28 +93,95 @@ class HotKeyFlexBoxViewController: BaseViewController {
             .bind(to: navigationItem.rightBarButtonItem!.rx.isEnabled)
             .disposed(by: rx.disposeBag)
         
+        viewModel.outputs.dataSource.skip(1)
+            .subscribe { [weak self] in
+                self?.flexLayoutWarp(hotKeys: $0)
+            }
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.outputs.networkError
+            .bind(to: rx.networkError)
+            .disposed(by: rx.disposeBag)
+        
+        errorRetry
+            .bind(onNext: viewModel.inputs.loadData)
+            .disposed(by: rx.disposeBag)
+        
+        //请求接口
+        viewModel.inputs.loadData()
     }
     
-    private func polling() {
-        requester.startListening()
-        requester.onPollingEnd = {reason in
-            switch reason {
-            case .success:
-                print("网络请求成功，轮询结束")
-            case .failure(let error):
-                print("网络请求失败，轮询结束，错误：\(error)")
-            case .timeout:
-                print("轮询超时结束")
-            }
-        }
-        requester.action()
-    }
+//    private func polling() {
+//        requester.startListening()
+//        requester.onPollingEnd = {reason in
+//            switch reason {
+//            case .success:
+//                print("网络请求成功，轮询结束")
+//            case .failure(let error):
+//                print("网络请求失败，轮询结束，错误：\(error)")
+//            case .timeout:
+//                print("轮询超时结束")
+//            }
+//        }
+//        requester.action()
+//    }
     
     private func pushToSearchResultController(keyword: String) {
         let vc = SearchResultController(keyword: keyword)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        rootFlexContainer.flex.margin(view.safeAreaInsets)
+        rootFlexContainer.frame = view.bounds
+        rootFlexContainer.flex.layout()
+    }
+}
 
+extension HotKeyFlexBoxViewController {
+    fileprivate func flexLayoutWarp(hotKeys: [HotKey]) {
+        let texts = hotKeys.map { $0.name }.compactMap { $0 }//过滤nil数据流
+            
+        let buttons = texts.map { title -> UIButton in
+            let button = UIButton(type: .custom)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            button.setTitle(title, for: .normal)
+            button.setTitleColor(.white, for: .normal)
+            button.backgroundColor = .systemBlue
+            button.layer.cornerRadius = 4
+            button.layer.masksToBounds = true
+            button.titleLabel?.lineBreakMode = .byTruncatingTail
+            
+            //点击按钮
+            button.rx.tap
+                .map { title }
+                .subscribeNext(weak: self) { (self) in
+                    { self.pushToSearchResultController(keyword: $0) }
+                }
+                .disposed(by: rx.disposeBag)
+            return button
+        }
+
+        rootFlexContainer.flex
+            .direction(.row)
+            .wrap(.wrap)
+            .paddingTop(12)
+            .paddingLeft(12)
+            .define { flex in
+                buttons.forEach { btn in
+                    flex.addItem(btn)
+                        .height(30)
+                        .marginRight(12)
+                        .marginBottom(12)
+                        .paddingHorizontal(12)//水平内间距
+                }
+            }
+        
+        //网络请求之后进行布局,所以需要进行布局更新
+        rootFlexContainer.flex.layout()
+            
+    }
 }
 
 //这个页面使用路由跳转
