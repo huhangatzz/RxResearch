@@ -22,31 +22,32 @@ class BaseTableViewController: BaseViewController {
     //无缓存,能终止,只接收订阅之后的事件
     let emptyDataSetButtonTap = PublishSubject<Void>()
     
-    // 不立即处理初始的 `false`，但第一次真实状态变化不会被丢弃。
-    let isEmptyRelay = ExBehaviorRelay(value: false, isIgnoreInitValue: true)
+    // 忽略数据源 BehaviorRelay 绑定过来的第一次初始值 []，
+    // 首次网络结果返回前不展示空数据页。
+    let isEmptyRelay = ExBehaviorRelay(value: false, isIgnoreFirstAccept: true)
     
-    //获取所有cell
+    //添加所有使用的cell
     static let allClass: [UITableViewCell.Type] = [UITableViewCell.self,
-                                                   InfoCell.self]
+                                                   InfoCell.self ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        setupPlainTableView()
+        baseTableBinding()
     }
 }
 
 extension BaseTableViewController {
-    private func setupTableView() {
-        /// 注册Cell之后,就可以直接在数据源中进行强制与复用,而不用再写if 与 else了
-        _ = BaseTableViewController.allClass.map({ tableView.register($0, forCellReuseIdentifier: $0.className) })
-        
+    private func setupPlainTableView() {
         tableView.tableFooterView = UIView()
         tableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
-        addTableViewAndLayout()
-        
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+        
+        //设置EmptyDataSet的数据源和代理
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
         //刷新
         tableView.mj_header = MJRefreshNormalHeader()
@@ -56,10 +57,19 @@ extension BaseTableViewController {
         footer.triggerAutomaticallyRefreshPercent = -2
         tableView.mj_footer = footer
         
-        //设置EmptyDataSet的数据源和代理
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
+        //布局表格视图
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
+        /// 注册Cell之后,就可以直接在数据源中进行强制与复用,而不用再写if 与 else了
+        BaseTableViewController.allClass.forEach {
+            tableView.register($0, forCellReuseIdentifier: $0.className)
+        }
+    }
+
+    private func baseTableBinding() {
         /// 获取indexPath 基类中取消点击cell的动画效果
         tableView.rx.itemSelected
             .bind { [weak self] indexPath in
@@ -80,22 +90,10 @@ extension BaseTableViewController {
             .distinctUntilChanged()
             .bind { [weak self] noContent in
                 guard let self else { return }
+                //暂无数据处理
                 tableView.reloadEmptyDataSet()
-                if noContent {
-                    debugLog("监听没有内容")
-                    tableView.mj_footer?.endRefreshingWithNoMoreData()
-                }
             }
             .disposed(by: rx.disposeBag)
-    }
-}
-
-extension BaseTableViewController {
-    private func addTableViewAndLayout() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
     }
 }
 

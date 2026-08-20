@@ -16,9 +16,17 @@ public final class ExBehaviorRelay<Element>: ObservableType {
     /// 每个新订阅是否忽略订阅瞬间的当前值。
     public let isIgnoreInitValue: Bool
 
+    /// 是否忽略绑定方第一次写入的值，适合过滤上游 BehaviorRelay 的初始值。
+    private var isIgnoreFirstAccept: Bool
+
     private let relay: BehaviorRelay<Element>
 
     public func accept(_ event: Element) {
+        if isIgnoreFirstAccept {
+            isIgnoreFirstAccept = false
+            return
+        }
+        
         relay.accept(event)
     }
 
@@ -27,9 +35,11 @@ public final class ExBehaviorRelay<Element>: ObservableType {
     }
 
     public init(value: Element,
-                isIgnoreInitValue: Bool = false) {
+                isIgnoreInitValue: Bool = false,
+                isIgnoreFirstAccept: Bool = false) {
         self.relay = BehaviorRelay(value: value)
         self.isIgnoreInitValue = isIgnoreInitValue
+        self.isIgnoreFirstAccept = isIgnoreFirstAccept
     }
 
     public func subscribe<Observer>(_ observer: Observer) -> Disposable where Observer: ObserverType, Element == Observer.Element {

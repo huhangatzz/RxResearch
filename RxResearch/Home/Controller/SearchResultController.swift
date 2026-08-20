@@ -12,7 +12,6 @@ import RxCocoa
 import NSObject_Rx
 import MJRefresh
 
-
 class SearchResultController: BaseTableViewController {
 
     private let keyword: String
