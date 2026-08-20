@@ -14,15 +14,16 @@ import Moya
 
 class SearchResultViewModel: BaseTableViewModel, VMInputs, VMOutputs, PageVMSetting {
     
+    /// 关键字
     private let keyword: String
+    
+    /// outputs
+    let dataSource = BehaviorRelay<[Info]>(value: [])
     
     init(keyword: String) {
         self.keyword = keyword
         super.init()
     }
-    
-    /// outputs
-    let dataSource = BehaviorRelay<[Info]>(value: [])
     
     /// inputs
     func loadData(actionType: ScrollViewActionType) {
@@ -75,7 +76,6 @@ private extension SearchResultViewModel {
                     if pageModel?.isNoMoreData == true, !dataSource.value.isEmpty {
                         refreshSubject.onNext(.showNomoreData)
                     }
-
                 case .failure(let error):
                     if case .loadMore = actionType {
                         // 按本次失败的页码回退，避免并发状态下对当前页重复减一。
@@ -90,14 +90,5 @@ private extension SearchResultViewModel {
                 }
             }
             .disposed(by: disposeBag)
-    }
-
-    func finishLoading(_ actionType: ScrollViewActionType) {
-        switch actionType {
-        case .refresh:
-            refreshSubject.onNext(.stopRefresh)
-        case .loadMore:
-            refreshSubject.onNext(.stopLoadmore)
-        }
     }
 }

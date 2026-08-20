@@ -15,14 +15,13 @@ class BaseTableViewModel: BaseViewModel {
     
     var pageNum: Int
     
+    /// 刷新控件命令是一次性事件，不需要向新订阅者重放上一条命令。
+    let refreshSubject = PublishSubject<MJRefreshAction>()
+    
     init(pageNum: Int = 1) {
         self.pageNum = pageNum
         super.init()
     }
-    
-    /// 刷新控件命令是一次性事件，不需要向新订阅者重放上一条命令。
-    let refreshSubject = PublishSubject<MJRefreshAction>()
-
 }
 
 extension BaseTableViewModel {
@@ -35,6 +34,15 @@ extension BaseTableViewModel {
     /// loadMore失败,回退pageNum
     func loadMoreFailureResetCurrentPage() {
         pageNum = max(0, pageNum - 1)
-        
+    }
+    
+    /// 完成刷新状态
+    func finishLoading(_ actionType: ScrollViewActionType) {
+        switch actionType {
+        case .refresh:
+            refreshSubject.onNext(.stopRefresh)
+        case .loadMore:
+            refreshSubject.onNext(.stopLoadmore)
+        }
     }
 }
