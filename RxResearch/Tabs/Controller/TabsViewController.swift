@@ -16,8 +16,10 @@ final class TabsViewController: BaseViewController {
     private let segmentedPageView = SegmentedPageView()
     private lazy var viewModel = TabsViewModel(type: type)
 
-    private var requestedPageIndices: Set<Int> = []
-    private var pageViewControllers: [SingleTabListViewController] = []
+    /// 只保存已经展示过的页面，避免启动时一次创建全部子控制器和 TableView。
+    private var pageViewControllers: [Int: SingleTabListViewController] = [:]
+    private var pageContainers: [UIView] = []
+    private var tabs: [TabModel] = []
 
     init(type: TagType) {
         self.type = type
@@ -43,7 +45,7 @@ private extension TabsViewController {
 
         //点击item
         segmentedPageView.onSelectedIndex = { [weak self] index in
-            self?.requestPageIfNeeded(at: index)
+            self?.showPageIfNeeded(at: index)
         }
         
         //视图大小
@@ -83,37 +85,47 @@ private extension TabsViewController {
         removeCurrentPages()
         guard !tabs.isEmpty else { return }
 
-        //创建子控制器
-        pageViewControllers = tabs.map { tab in
-            SingleTabListViewController(type: type, tabModel: tab) { [weak self] info in
-                self?.pushToWebViewController(webLoadInfo: info)
-            }
-        }
-
-        pageViewControllers.forEach(addChild)
+        self.tabs = tabs
+        // 分页组件只持有轻量容器；真正的控制器在页面第一次显示时创建。
+        pageContainers = tabs.map { _ in UIView() }
         segmentedPageView.update(
             titles: tabs.map { $0.name?.replaceHtmlElement ?? "" },
-            pageViews: pageViewControllers.map(\.view)
+            pageViews: pageContainers
         )
-        pageViewControllers.forEach { $0.didMove(toParent: self) }
-
-        requestedPageIndices.removeAll()
-        requestPageIfNeeded(at: 0)
+        showPageIfNeeded(at: 0)
     }
 
-    func requestPageIfNeeded(at index: Int) {
-        guard pageViewControllers.indices.contains(index),
-              requestedPageIndices.insert(index).inserted else { return }
-        pageViewControllers[index].requestData()
+    func showPageIfNeeded(at index: Int) {
+        guard tabs.indices.contains(index),
+              pageContainers.indices.contains(index),
+              pageViewControllers[index] == nil else { return }
+
+        let controller = SingleTabListViewController(
+            type: type,
+            tabModel: tabs[index]
+        ) { [weak self] info in
+            self?.pushToWebViewController(webLoadInfo: info)
+        }
+
+        let container = pageContainers[index]
+        addChild(controller)
+        container.addSubview(controller.view)
+        controller.view.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        controller.didMove(toParent: self)
+        pageViewControllers[index] = controller
+        controller.requestData()
     }
 
     func removeCurrentPages() {
-        pageViewControllers.forEach { controller in
+        pageViewControllers.values.forEach { controller in
             controller.willMove(toParent: nil)
             controller.view.removeFromSuperview()
             controller.removeFromParent()
         }
         pageViewControllers.removeAll()
-        requestedPageIndices.removeAll()
+        pageContainers.removeAll()
+        tabs.removeAll()
     }
 }
