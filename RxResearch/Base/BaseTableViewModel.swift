@@ -34,7 +34,7 @@ extension BaseTableViewModel {
     
     /// loadMore失败,回退pageNum
     func loadMoreFailureResetCurrentPage() {
-        pageNum = pageNum - 1
+        pageNum = max(0, pageNum - 1)
+        
     }
 }
-

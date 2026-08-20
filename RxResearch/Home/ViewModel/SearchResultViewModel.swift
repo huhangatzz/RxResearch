@@ -37,49 +37,67 @@ class SearchResultViewModel: BaseTableViewModel, VMInputs, VMOutputs, PageVMSett
 
 // MARK: - 网络请求,普通列表数据
 private extension SearchResultViewModel {
-    func refresh() {
+    private func refresh() {
         resetCurrentPageAndMjFooter()
-        requestData(page: pageNum)
+        requestData(page: pageNum, actionType: .refresh)
     }
     
-    func loadMore() {
+    private func loadMore() {
         pageNum = pageNum + 1
-        requestData(page: pageNum, loadMoreFailureResetCurrentPageCallback: loadMoreFailureResetCurrentPage)
+        requestData(page: pageNum, actionType: .loadMore)
     }
-    
-    func requestData(page: Int, loadMoreFailureResetCurrentPageCallback: (() -> Void)? = nil) {
+
+    //请求数据
+    private func requestData(page: Int, actionType: ScrollViewActionType) {
         homeProvider.rx.request(HomeService.queryKeyword(keyword, page))
             .map(BaseModel<Page<Info>>.self)
-            .compactMap { $0.data } //已经去data了
-            .asObservable()
-            .asSingle()
-            .subscribe { event in
-                
-                //停止刷新
-                self.pageNum == 0 ? self.refreshSubject.onNext(.stopRefresh) : self.refreshSubject.onNext(.stopLoadmore)
-                
+            .subscribe { [weak self] event in
+                guard let self else { return }
+
+                finishLoading(actionType)
+
                 switch event {
-                case .success(let pageModel):
-                    if let datas = pageModel.datas {
-                        if self.pageNum == 0 {
-                            self.dataSource.accept(datas)
-                        } else {
-                            self.dataSource.accept(self.dataSource.value+datas)
-                        }
+                case .success(let response):
+                    let pageModel = response.data
+                    let newItems = pageModel?.datas ?? []
+
+                    switch actionType {
+                    case .refresh:
+                        dataSource.accept(newItems)
+                    case .loadMore:
+                        dataSource.accept(dataSource.value + newItems)
                     }
-                    
-                    if pageModel.isNoMoreData {
-                        self.refreshSubject.onNext(.showNomoreData)
+
+                    // 请求成功后清除可能存在的全屏网络错误状态。
+                    networkError.onNext(nil)
+
+                    // 空列表由 EmptyDataSet 表达，不重复展示“已经全部加载完毕”。
+                    if pageModel?.isNoMoreData == true, !dataSource.value.isEmpty {
+                        refreshSubject.onNext(.showNomoreData)
                     }
-                case .failure:
-                    loadMoreFailureResetCurrentPageCallback?()
-                }
-                
-                /// 数据源为空才展示错误页面
-                if self.dataSource.value.isEmpty {
-                    self.processRxMoyaRequestEvent(event: event)
+
+                case .failure(let error):
+                    if case .loadMore = actionType {
+                        // 按本次失败的页码回退，避免并发状态下对当前页重复减一。
+                        loadMoreFailureResetCurrentPage()
+                    }
+
+                    // 有旧数据时保留列表；没有内容时才展示全屏网络错误。
+                    if dataSource.value.isEmpty,
+                       let moyaError = error as? MoyaError {
+                        networkError.onNext(moyaError)
+                    }
                 }
             }
             .disposed(by: disposeBag)
+    }
+
+    func finishLoading(_ actionType: ScrollViewActionType) {
+        switch actionType {
+        case .refresh:
+            refreshSubject.onNext(.stopRefresh)
+        case .loadMore:
+            refreshSubject.onNext(.stopLoadmore)
+        }
     }
 }
