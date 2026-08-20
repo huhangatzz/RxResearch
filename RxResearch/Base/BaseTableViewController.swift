@@ -24,7 +24,11 @@ class BaseTableViewController: BaseViewController {
     
     // 忽略数据源 BehaviorRelay 绑定过来的第一次初始值 []，
     // 首次网络结果返回前不展示空数据页。
-    let isEmptyRelay = ExBehaviorRelay(value: false, isIgnoreFirstAccept: true)
+    let isEmptyRelay = ExBehaviorRelay(
+        value: false,
+        isIgnoreInitValue: true,
+        isIgnoreFirstAccept: true
+    )
     
     //添加所有使用的cell
     static let allClass: [UITableViewCell.Type] = [UITableViewCell.self,
@@ -52,9 +56,12 @@ extension BaseTableViewController {
         //刷新
         tableView.mj_header = MJRefreshNormalHeader()
         let footer = MJRefreshAutoNormalFooter()
-        footer.setTitle("", for: .idle)
-        footer.isRefreshingTitleHidden = true
+        footer.setTitle("上拉加载更多", for: .idle)
+        footer.setTitle("正在加载更多...", for: .refreshing)
+        footer.isRefreshingTitleHidden = false
         footer.triggerAutomaticallyRefreshPercent = -2
+        // 首次请求结果返回前没有可加载的列表内容，Footer 默认隐藏。
+        footer.isHidden = true
         tableView.mj_footer = footer
         
         //布局表格视图
@@ -70,18 +77,11 @@ extension BaseTableViewController {
     }
 
     private func baseTableBinding() {
-        /// 获取indexPath 基类中取消点击cell的动画效果
+        /// 基类中取消点击cell的动画效果
         tableView.rx.itemSelected
             .bind { [weak self] indexPath in
                 self?.tableView.deselectRow(at:indexPath, animated: false)
                 debugLog(indexPath)
-            }
-            .disposed(by: rx.disposeBag)
-        
-        /// 订阅点击了数据为空，请重试的行为，里面没有用状态去绑定tableView是因为没有ViewModel
-        emptyDataSetButtonTap
-            .bind { [weak self] _ in
-                self?.tableView.mj_header?.beginRefreshing()
             }
             .disposed(by: rx.disposeBag)
         
@@ -90,8 +90,21 @@ extension BaseTableViewController {
             .distinctUntilChanged()
             .bind { [weak self] noContent in
                 guard let self else { return }
-                //暂无数据处理
+
+                // 空数据只控制占位图和 Footer 显隐；分页状态由 refreshSubject 控制。
+                tableView.mj_footer?.isHidden = noContent
                 tableView.reloadEmptyDataSet()
+
+                if noContent {
+                    debugLog("监听没有内容")
+                }
+            }
+            .disposed(by: rx.disposeBag)
+        
+        /// 订阅点击了数据为空，请重试的行为
+        emptyDataSetButtonTap
+            .bind { [weak self] _ in
+                self?.tableView.mj_header?.beginRefreshing()
             }
             .disposed(by: rx.disposeBag)
     }
