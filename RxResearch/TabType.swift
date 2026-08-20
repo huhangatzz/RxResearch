@@ -23,9 +23,9 @@ extension TabType {
         case .home:
             return HomeViewController()
         case .project:
-            return TabsViewController()
+            return TabsViewController(type: .project)
         case .publicNumber:
-            return TabsViewController()
+            return TabsViewController(type: .publicNumber)
         case .tree:
             return TreeViewController()
         case .my:

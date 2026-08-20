@@ -24,6 +24,9 @@ let plugins: [PluginType] = [activityPlugin, responseInterceptorPlugin, response
 /// 首页
 let homeProvider = MoyaProvider<HomeService>(plugins: plugins)
 
+/// 分段标签与文章列表
+let tabsProvider = MoyaProvider<TabsService>(plugins: plugins)
+
 /// 我的
 let myEndpointClosure = { (target: MyService) -> Endpoint in
     let defaultEndpoint = MoyaProvider.defaultEndpointMapping(for: target)

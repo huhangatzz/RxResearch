@@ -31,7 +31,9 @@ target 'RxResearch' do
   pod 'PinLayout'
   
   # UI
+  # 刷新
   pod 'MJRefresh'
+  # 活动提示器
   pod 'SVProgressHUD'
   # Keyboard,弹不出来的原因是8.0.0之后拆分为不同的模块,需要分别进行配置
   pod 'IQKeyboardManagerSwift'
@@ -39,6 +41,8 @@ target 'RxResearch' do
   pod 'FSPagerView'
   # 文本轮播
   pod 'MarqueeLabel'
+  # 分段视图
+  pod 'JXSegmentedView'
   
   # R函数
   # 不使用pod 'R.swift'方式, 使用Swift Package方式引入 https://github.com/mac-cain13/R.swift

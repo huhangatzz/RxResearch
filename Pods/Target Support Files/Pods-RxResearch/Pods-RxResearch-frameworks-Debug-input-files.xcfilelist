@@ -15,6 +15,7 @@ ${BUILT_PRODUCTS_DIR}/IQKeyboardToolbarManager/IQKeyboardToolbarManager.framewor
 ${BUILT_PRODUCTS_DIR}/IQTextInputViewNotification/IQTextInputViewNotification.framework
 ${BUILT_PRODUCTS_DIR}/IQTextView/IQTextView.framework
 ${BUILT_PRODUCTS_DIR}/JWNetAutoCache/JWNetAutoCache.framework
+${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework
 ${BUILT_PRODUCTS_DIR}/KSCrash/KSCrash.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/LifetimeTracker/LifetimeTracker.framework

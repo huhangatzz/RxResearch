@@ -96,6 +96,13 @@
 		41C626E030359E5100602223 /* ActivityHUDPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626DF30359E5100602223 /* ActivityHUDPlugin.swift */; };
 		41C627063035ADD200602223 /* BaseTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627053035ADD200602223 /* BaseTableViewModel.swift */; };
 		41C6270D3035AF7F00602223 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6270C3035AF7F00602223 /* SearchResultViewModel.swift */; };
+		41C6272E3036D69600602223 /* TagType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6272D3036D69600602223 /* TagType.swift */; };
+		41C6273A3036E1E800602223 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627393036E1E800602223 /* TabModel.swift */; };
+		41C6273F3036E2EC00602223 /* SingleTabListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6273E3036E2EC00602223 /* SingleTabListViewController.swift */; };
+		41C628103037F00000602223 /* SegmentedPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6280F3037F00000602223 /* SegmentedPageView.swift */; };
+		41C628123037F10000602223 /* TabsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628113037F10000602223 /* TabsService.swift */; };
+		41C628143037F10000602223 /* TabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628133037F10000602223 /* TabsViewModel.swift */; };
+		41C628163037F10000602223 /* SingleTabListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628153037F10000602223 /* SingleTabListViewModel.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -202,6 +209,13 @@
 		41C626DF30359E5100602223 /* ActivityHUDPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHUDPlugin.swift; sourceTree = "<group>"; };
 		41C627053035ADD200602223 /* BaseTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewModel.swift; sourceTree = "<group>"; };
 		41C6270C3035AF7F00602223 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		41C6272D3036D69600602223 /* TagType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagType.swift; sourceTree = "<group>"; };
+		41C627393036E1E800602223 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		41C6273E3036E2EC00602223 /* SingleTabListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTabListViewController.swift; sourceTree = "<group>"; };
+		41C6280F3037F00000602223 /* SegmentedPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPageView.swift; sourceTree = "<group>"; };
+		41C628113037F10000602223 /* TabsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsService.swift; sourceTree = "<group>"; };
+		41C628133037F10000602223 /* TabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewModel.swift; sourceTree = "<group>"; };
+		41C628153037F10000602223 /* SingleTabListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTabListViewModel.swift; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -452,6 +466,7 @@
 				41C6258C3032A93F00602223 /* WebLoadInfo.swift */,
 				41C6265830344A1700602223 /* AccountInfo.swift */,
 				41C626D230358C7500602223 /* HotKey.swift */,
+				41C627393036E1E800602223 /* TabModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,6 +478,7 @@
 				41C625A53032B31E00602223 /* HomeService.swift */,
 				41C625D33032E58800602223 /* MockService.swift */,
 				41C6268130344E0100602223 /* MyService.swift */,
+				41C628113037F10000602223 /* TabsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -628,6 +644,7 @@
 			children = (
 				41E23E21302AF4AC004D96C7 /* TabsViewController.swift */,
 				41E23E23302AF4BD004D96C7 /* TreeViewController.swift */,
+				41C6273E3036E2EC00602223 /* SingleTabListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -635,6 +652,7 @@
 		41E23E17302AF416004D96C7 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				41C6272D3036D69600602223 /* TagType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -642,6 +660,7 @@
 		41E23E18302AF416004D96C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41C6280F3037F00000602223 /* SegmentedPageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -649,6 +668,8 @@
 		41E23E19302AF416004D96C7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				41C628133037F10000602223 /* TabsViewModel.swift */,
+				41C628153037F10000602223 /* SingleTabListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -827,7 +848,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C628123037F10000602223 /* TabsService.swift in Sources */,
+				41C628143037F10000602223 /* TabsViewModel.swift in Sources */,
+				41C628163037F10000602223 /* SingleTabListViewModel.swift in Sources */,
+				41C628103037F00000602223 /* SegmentedPageView.swift in Sources */,
 				41C626C53035880F00602223 /* SearchResultController.swift in Sources */,
+				41C6273F3036E2EC00602223 /* SingleTabListViewController.swift in Sources */,
 				41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */,
 				411C91D8302983C300625E82 /* AccountManageable.swift in Sources */,
 				41C625D43032E58800602223 /* MockService.swift in Sources */,
@@ -882,6 +908,7 @@
 				41C6266A30344AD500602223 /* NSURLProtocol+WKWebVIew.m in Sources */,
 				4197E384302D70BC00A4A9FA /* ViewModelProtocol.swift in Sources */,
 				411C91C13029710B00625E82 /* AppDelegate+CrashConfig.swift in Sources */,
+				41C6272E3036D69600602223 /* TagType.swift in Sources */,
 				41C625CF3032BFAA00602223 /* ResponseCachePlugin.swift in Sources */,
 				411C91C3302972E000625E82 /* Collection+Extension.swift in Sources */,
 				41C6259D3032AECF00602223 /* Page.swift in Sources */,
@@ -894,6 +921,7 @@
 				41C625923032AA5400602223 /* Banner.swift in Sources */,
 				4197E34A302C57CA00A4A9FA /* ExBehaviorRelay.swift in Sources */,
 				41C6263A3034474600602223 /* WeakScriptMessageDelegate.swift in Sources */,
+				41C6273A3036E1E800602223 /* TabModel.swift in Sources */,
 				41C626D8303596A400602223 /* BaseRequestable.swift in Sources */,
 				41C625CA3032BE4700602223 /* HUD.swift in Sources */,
 				41C6258D3032A93F00602223 /* WebLoadInfo.swift in Sources */,

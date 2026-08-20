@@ -37,6 +37,29 @@ extension Api {
     }
 }
 
+/// 项目、公众号、体系与教程分页
+extension Api {
+    enum Project {
+        static let tags = "project/tree/json"
+        static let tagList = "project/list/"
+    }
+
+    enum PublicNumber {
+        static let tags = "wxarticle/chapters/json"
+        static let tagList = "wxarticle/list/"
+    }
+
+    enum Tree {
+        static let tags = "tree/json"
+        static let tagList = "article/list/"
+    }
+
+    enum Course {
+        static let tags = "chapter/547/sublist/json"
+        static let tagList = "article/list/"
+    }
+}
+
 
 extension Api {
     /// 我的 取消收藏和点击收藏操作为post,其他为get
