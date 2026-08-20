@@ -22,6 +22,10 @@ final class AccountManager: AccountManageable {
     /// 悼念模式 (公祭日app全部展示黑白灰色的样式)
     var isGrayModeRelay = BehaviorRelay(value: false)
     
+    /// 体系Cell的布局模式
+    @CodableUserDefault(key: "kLayoutType", defaultValue: .wrap)
+    var layoutType: LayoutType
+    
     /// 单例
     static let shared = AccountManager()
     

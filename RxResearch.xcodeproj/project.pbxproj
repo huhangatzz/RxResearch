@@ -99,6 +99,11 @@
 		41C6272E3036D69600602223 /* TagType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6272D3036D69600602223 /* TagType.swift */; };
 		41C6273A3036E1E800602223 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627393036E1E800602223 /* TabModel.swift */; };
 		41C6273F3036E2EC00602223 /* SingleTabListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6273E3036E2EC00602223 /* SingleTabListViewController.swift */; };
+		41C6274C3037022000602223 /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6274B3037022000602223 /* PropertyWrapper.swift */; };
+		41C627513037025D00602223 /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627503037025D00602223 /* LayoutType.swift */; };
+		41C62755303702F600602223 /* TreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62754303702F600602223 /* TreeCell.swift */; };
+		41C6275A3037031200602223 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627593037031200602223 /* BaseTableViewCell.swift */; };
+		41C6275F3037059300602223 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6275E3037059300602223 /* Notification.Name.swift */; };
 		41C628103037F00000602223 /* SegmentedPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6280F3037F00000602223 /* SegmentedPageView.swift */; };
 		41C628123037F10000602223 /* TabsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628113037F10000602223 /* TabsService.swift */; };
 		41C628143037F10000602223 /* TabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628133037F10000602223 /* TabsViewModel.swift */; };
@@ -212,6 +217,11 @@
 		41C6272D3036D69600602223 /* TagType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagType.swift; sourceTree = "<group>"; };
 		41C627393036E1E800602223 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
 		41C6273E3036E2EC00602223 /* SingleTabListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTabListViewController.swift; sourceTree = "<group>"; };
+		41C6274B3037022000602223 /* PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
+		41C627503037025D00602223 /* LayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
+		41C62754303702F600602223 /* TreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeCell.swift; sourceTree = "<group>"; };
+		41C627593037031200602223 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		41C6275E3037059300602223 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
 		41C6280F3037F00000602223 /* SegmentedPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPageView.swift; sourceTree = "<group>"; };
 		41C628113037F10000602223 /* TabsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsService.swift; sourceTree = "<group>"; };
 		41C628133037F10000602223 /* TabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewModel.swift; sourceTree = "<group>"; };
@@ -315,6 +325,7 @@
 				41C625B23032B9D300602223 /* Int+Extension.swift */,
 				41C625DF3032F48600602223 /* String+Extension.swift */,
 				41C6268630344F9300602223 /* Dictionary+Extension.swift */,
+				41C6275E3037059300602223 /* Notification.Name.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -380,6 +391,7 @@
 				41C625C93032BE4700602223 /* HUD.swift */,
 				41C626B730354F8E00602223 /* KeyRouter.swift */,
 				41C626BD3035574F00602223 /* PollingNetworkRequester.swift */,
+				41C6274B3037022000602223 /* PropertyWrapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -576,6 +588,7 @@
 				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
 				41C626A030353C7900602223 /* Theme.swift */,
 				41C626D7303596A400602223 /* BaseRequestable.swift */,
+				41C627593037031200602223 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -653,6 +666,7 @@
 			isa = PBXGroup;
 			children = (
 				41C6272D3036D69600602223 /* TagType.swift */,
+				41C627503037025D00602223 /* LayoutType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -661,6 +675,7 @@
 			isa = PBXGroup;
 			children = (
 				41C6280F3037F00000602223 /* SegmentedPageView.swift */,
+				41C62754303702F600602223 /* TreeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -873,6 +888,7 @@
 				41C626BE3035574F00602223 /* PollingNetworkRequester.swift in Sources */,
 				41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */,
 				41C625A63032B31E00602223 /* HomeService.swift in Sources */,
+				41C62755303702F600602223 /* TreeCell.swift in Sources */,
 				411C91DB3029A23400625E82 /* NetworkMonitor.swift in Sources */,
 				411C91EF3029D87A00625E82 /* UIApplication+Extension.swift in Sources */,
 				413AD837302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift in Sources */,
@@ -894,10 +910,12 @@
 				41C6265930344A1700602223 /* AccountInfo.swift in Sources */,
 				413AD846302B1FF800771C91 /* GrayModeView.swift in Sources */,
 				411C91C5302974A800625E82 /* AppDelegate+LogConfig.swift in Sources */,
+				41C6275A3037031200602223 /* BaseTableViewCell.swift in Sources */,
 				41C6264D303447AB00602223 /* CollectActionType.swift in Sources */,
 				41C6264E303447AB00602223 /* ShareType.swift in Sources */,
 				41C6270D3035AF7F00602223 /* SearchResultViewModel.swift in Sources */,
 				41C6264F303447AB00602223 /* ScriptMessageHandlerType.swift in Sources */,
+				41C6274C3037022000602223 /* PropertyWrapper.swift in Sources */,
 				41E23E24302AF4BD004D96C7 /* TreeViewController.swift in Sources */,
 				411C91CE3029803A00625E82 /* AppDelegate+RouterConfig.swift in Sources */,
 				411C91BC302969F900625E82 /* UITraitCollection+Extension.swift in Sources */,
@@ -923,7 +941,9 @@
 				41C6263A3034474600602223 /* WeakScriptMessageDelegate.swift in Sources */,
 				41C6273A3036E1E800602223 /* TabModel.swift in Sources */,
 				41C626D8303596A400602223 /* BaseRequestable.swift in Sources */,
+				41C627513037025D00602223 /* LayoutType.swift in Sources */,
 				41C625CA3032BE4700602223 /* HUD.swift in Sources */,
+				41C6275F3037059300602223 /* Notification.Name.swift in Sources */,
 				41C6258D3032A93F00602223 /* WebLoadInfo.swift in Sources */,
 				410E503E30295ED7007F7567 /* MainTabBarController.swift in Sources */,
 				41C626453034479500602223 /* CopyActivity.swift in Sources */,

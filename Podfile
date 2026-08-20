@@ -14,6 +14,8 @@ target 'RxResearch' do
   pod 'RxCocoa'
   pod 'RxSwiftExt'
   pod 'NSObject+Rx'
+  # 多 Section 分组、差分局部刷新动画
+  pod 'RxDataSources'
   # 添加手势与调用会更加简单
   # RxGesture 是 RxSwiftCommunity 的库，把系统 UIGestureRecognizer（点击、长按、拖拽、捏合、滑动）封装成响应式 Observable 流，专门给 RxSwift/RxCocoa 项目用，解决原生手势写大量 delegate/selector 命令式代码的痛点
   pod 'RxGesture'

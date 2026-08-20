@@ -11,7 +11,9 @@ import NSObject_Rx
 import RxCocoa
 import RxSwift
 
-final class TabsViewModel: BaseViewModel {
+typealias TreeViewModel = TabsViewModel
+
+final class TabsViewModel: BaseTableViewModel {
     
     private let type: TagType
     

@@ -27,7 +27,7 @@ extension TabType {
         case .publicNumber:
             return TabsViewController(type: .publicNumber)
         case .tree:
-            return TreeViewController()
+            return TreeViewController(type: .tree)
         case .my:
             return MyViewController()
         }
