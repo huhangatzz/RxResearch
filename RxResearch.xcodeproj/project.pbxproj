@@ -94,6 +94,8 @@
 		41C626D330358C7500602223 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626D230358C7500602223 /* HotKey.swift */; };
 		41C626D8303596A400602223 /* BaseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626D7303596A400602223 /* BaseRequestable.swift */; };
 		41C626E030359E5100602223 /* ActivityHUDPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C626DF30359E5100602223 /* ActivityHUDPlugin.swift */; };
+		41C627063035ADD200602223 /* BaseTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627053035ADD200602223 /* BaseTableViewModel.swift */; };
+		41C6270D3035AF7F00602223 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6270C3035AF7F00602223 /* SearchResultViewModel.swift */; };
 		41E23E09302ABC6C004D96C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */; };
 		41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */; };
 		41E23E0F302AF2D2004D96C7 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E23E0E302AF2D2004D96C7 /* TabType.swift */; };
@@ -198,6 +200,8 @@
 		41C626D230358C7500602223 /* HotKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
 		41C626D7303596A400602223 /* BaseRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestable.swift; sourceTree = "<group>"; };
 		41C626DF30359E5100602223 /* ActivityHUDPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHUDPlugin.swift; sourceTree = "<group>"; };
+		41C627053035ADD200602223 /* BaseTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewModel.swift; sourceTree = "<group>"; };
+		41C6270C3035AF7F00602223 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		41E23E08302ABC6C004D96C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		41E23E0E302AF2D2004D96C7 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
@@ -551,6 +555,7 @@
 				4197E32A302C1A8400A4A9FA /* BaseViewController.swift */,
 				4197E32C302C22ED00A4A9FA /* BaseTableViewController.swift */,
 				4197E369302D595500A4A9FA /* BaseViewModel.swift */,
+				41C627053035ADD200602223 /* BaseTableViewModel.swift */,
 				413AD836302B19E600771C91 /* TabBarVCChildrenRefreshProtocol.swift */,
 				41E23E0B302ACA97004D96C7 /* BaseNavigationController.swift */,
 				41C626A030353C7900602223 /* Theme.swift */,
@@ -602,6 +607,7 @@
 			children = (
 				4197E373302D6F9700A4A9FA /* HomeViewModel.swift */,
 				41C626CD30358C2500602223 /* HotKeyViewModel.swift */,
+				41C6270C3035AF7F00602223 /* SearchResultViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -850,6 +856,7 @@
 				411C91BF30296FDC00625E82 /* NetworkActivityLogger.swift in Sources */,
 				411C91D63029838D00625E82 /* AccountManager.swift in Sources */,
 				411C91E13029C2B200625E82 /* KeyConstants.swift in Sources */,
+				41C627063035ADD200602223 /* BaseTableViewModel.swift in Sources */,
 				4197E389302D76A800A4A9FA /* MJRefresh+RxSwift.swift in Sources */,
 				411C91BA3029684300625E82 /* SVProgressHUD+Extension.swift in Sources */,
 				41C6268230344E0100602223 /* MyService.swift in Sources */,
@@ -863,6 +870,7 @@
 				411C91C5302974A800625E82 /* AppDelegate+LogConfig.swift in Sources */,
 				41C6264D303447AB00602223 /* CollectActionType.swift in Sources */,
 				41C6264E303447AB00602223 /* ShareType.swift in Sources */,
+				41C6270D3035AF7F00602223 /* SearchResultViewModel.swift in Sources */,
 				41C6264F303447AB00602223 /* ScriptMessageHandlerType.swift in Sources */,
 				41E23E24302AF4BD004D96C7 /* TreeViewController.swift in Sources */,
 				411C91CE3029803A00625E82 /* AppDelegate+RouterConfig.swift in Sources */,

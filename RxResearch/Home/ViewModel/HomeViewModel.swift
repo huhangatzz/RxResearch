@@ -12,11 +12,9 @@ import RxCocoa
 import NSObject_Rx
 import Moya
 
-class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
-    var pageNum: Int
+class HomeViewModel: BaseTableViewModel, VMInputs, VMOutputs, PageVMSetting {
     
-    init(pageNum: Int = 1) {
-        self.pageNum = pageNum
+    init() {
         super.init()
         mock()
     }
@@ -35,9 +33,6 @@ class HomeViewModel: BaseViewModel, VMInputs, VMOutputs, PageVMSetting {
     let dataSource = BehaviorRelay<[Info]>(value: [])
     //轮播图数据
     let banners = BehaviorRelay<[Banner]>(value: [])
-    
-    /// 刷新控件命令是一次性事件，不需要向新订阅者重放上一条命令。
-    let refreshSubject = PublishSubject<MJRefreshAction>()
     
     /// inputs
     func loadData(actionType: ScrollViewActionType) {
@@ -206,19 +201,6 @@ private extension HomeViewModel {
             .map(BaseModel<[Banner]>.self)
             .map { $0.data ?? [] }
             .catchAndReturn([])
-    }
-}
-
-extension HomeViewModel {
-    /// 重置PageNum与上拉组件
-    func resetCurrentPageAndMjFooter() {
-        pageNum = 0
-        refreshSubject.onNext(.resetNomoreData)
-    }
-    
-    /// loadMore失败,回退pageNum
-    func loadMoreFailureResetCurrentPage() {
-        pageNum = pageNum - 1
     }
 }
 

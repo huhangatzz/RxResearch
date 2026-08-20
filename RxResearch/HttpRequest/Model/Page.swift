@@ -9,7 +9,7 @@ import Foundation
 
 struct Page<Content: Codable>: Codable {
     let curPage: Int?
-    let datas: [Content]?
+    let datas: [Content]? //是数组类型的泛型
     let offset: Int?
     let over: Bool?
     let pageCount: Int?
