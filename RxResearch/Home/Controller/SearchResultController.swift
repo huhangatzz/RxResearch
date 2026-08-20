@@ -27,7 +27,6 @@ class SearchResultController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         binding()
     }

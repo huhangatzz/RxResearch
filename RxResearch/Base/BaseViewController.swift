@@ -65,7 +65,6 @@ class BaseViewController: UIViewController {
         registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (_: BaseViewController, _: UITraitCollection) in
             SVProgressHUD.styleSetting()
         }
-        
     }
     
     @objc func leftBarButtonItemAction(_ item: UIBarButtonItem) {
