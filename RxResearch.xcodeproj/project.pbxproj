@@ -104,6 +104,8 @@
 		41C62755303702F600602223 /* TreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62754303702F600602223 /* TreeCell.swift */; };
 		41C6275A3037031200602223 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627593037031200602223 /* BaseTableViewCell.swift */; };
 		41C6275F3037059300602223 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6275E3037059300602223 /* Notification.Name.swift */; };
+		41C627673037DCE800602223 /* Flex+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627663037DCE800602223 /* Flex+Extension.swift */; };
+		41C627783037EA1100602223 /* TreeTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627773037EA1100602223 /* TreeTagCell.swift */; };
 		41C628103037F00000602223 /* SegmentedPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6280F3037F00000602223 /* SegmentedPageView.swift */; };
 		41C628123037F10000602223 /* TabsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628113037F10000602223 /* TabsService.swift */; };
 		41C628143037F10000602223 /* TabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628133037F10000602223 /* TabsViewModel.swift */; };
@@ -222,6 +224,8 @@
 		41C62754303702F600602223 /* TreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeCell.swift; sourceTree = "<group>"; };
 		41C627593037031200602223 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		41C6275E3037059300602223 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
+		41C627663037DCE800602223 /* Flex+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flex+Extension.swift"; sourceTree = "<group>"; };
+		41C627773037EA1100602223 /* TreeTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTagCell.swift; sourceTree = "<group>"; };
 		41C6280F3037F00000602223 /* SegmentedPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPageView.swift; sourceTree = "<group>"; };
 		41C628113037F10000602223 /* TabsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsService.swift; sourceTree = "<group>"; };
 		41C628133037F10000602223 /* TabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewModel.swift; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 				411C91B63029643000625E82 /* AppDelegate+Extension */,
 				4197E380302D70A900A4A9FA /* ViewModel+Plus */,
 				4197E38D302D76B100A4A9FA /* MJRefresh+RxSwift */,
+				41C627623037DCD000602223 /* Flex+Extension */,
 				411C91B93029684300625E82 /* SVProgressHUD+Extension.swift */,
 				411C91BB302969F900625E82 /* UITraitCollection+Extension.swift */,
 				411C91EE3029D87A00625E82 /* UIApplication+Extension.swift */,
@@ -577,6 +582,14 @@
 			path = JavaScript;
 			sourceTree = "<group>";
 		};
+		41C627623037DCD000602223 /* Flex+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				41C627663037DCE800602223 /* Flex+Extension.swift */,
+			);
+			path = "Flex+Extension";
+			sourceTree = "<group>";
+		};
 		41E23E0A302ACA8A004D96C7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,6 +689,7 @@
 			children = (
 				41C6280F3037F00000602223 /* SegmentedPageView.swift */,
 				41C62754303702F600602223 /* TreeCell.swift */,
+				41C627773037EA1100602223 /* TreeTagCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -936,6 +950,7 @@
 				411C91D0302980C200625E82 /* LogUtils.swift in Sources */,
 				4197E363302C709800A4A9FA /* UINavigationController+Extension.swift in Sources */,
 				41C625BD3032BD1200602223 /* Provider.swift in Sources */,
+				41C627673037DCE800602223 /* Flex+Extension.swift in Sources */,
 				41C625923032AA5400602223 /* Banner.swift in Sources */,
 				4197E34A302C57CA00A4A9FA /* ExBehaviorRelay.swift in Sources */,
 				41C6263A3034474600602223 /* WeakScriptMessageDelegate.swift in Sources */,
@@ -958,6 +973,7 @@
 				41C626D330358C7500602223 /* HotKey.swift in Sources */,
 				41C626E030359E5100602223 /* ActivityHUDPlugin.swift in Sources */,
 				4197E374302D6F9700A4A9FA /* HomeViewModel.swift in Sources */,
+				41C627783037EA1100602223 /* TreeTagCell.swift in Sources */,
 				41C625C53032BDC100602223 /* ResponseInterceptorPlugin.swift in Sources */,
 				41C626B830354F8E00602223 /* KeyRouter.swift in Sources */,
 				4197E36A302D595500A4A9FA /* BaseViewModel.swift in Sources */,

@@ -29,6 +29,7 @@ final class TabsViewModel: BaseTableViewModel {
             .map(BaseModel<[TabModel]>.self)
             .subscribe { [weak self] event in
                 guard let self else { return }
+                refreshSubject.onNext(.stopRefresh)
 
                 switch event {
                 case .success(let response):

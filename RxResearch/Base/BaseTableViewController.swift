@@ -32,7 +32,8 @@ class BaseTableViewController: BaseViewController {
     
     //添加所有使用的cell
     static let allClass: [UITableViewCell.Type] = [UITableViewCell.self,
-                                                   InfoCell.self ]
+                                                   InfoCell.self,
+                                                   TreeCell.self ]
     
     override func viewDidLoad() {
         super.viewDidLoad()

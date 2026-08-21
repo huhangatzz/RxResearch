@@ -16,6 +16,7 @@ final class SingleTabListViewController: BaseTableViewController {
     private let tabModel: TabModel
     private let cellSelected: ((WebLoadInfo) -> Void)?
     private lazy var viewModel = SingleTabListViewModel(type: type, tabID: tabModel.id ?? 0)
+    private var hasRequestedData = false
 
     init(type: TagType, tabModel: TabModel, cellSelected: ((WebLoadInfo) -> Void)? = nil) {
         self.type = type
@@ -31,16 +32,24 @@ final class SingleTabListViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         binding()
+        requestData()
     }
 
     /// 由父控制器在该页第一次显示时调用。
     func requestData() {
+        guard !hasRequestedData else { return }
+        hasRequestedData = true
         viewModel.inputs.loadData(actionType: .refresh)
     }
 }
 
 private extension SingleTabListViewController {
+    private func setupUI() {
+        title = tabModel.name
+    }
+    
     func binding() {
         tableView.mj_header?.rx.refresh
             .map { ScrollViewActionType.refresh }

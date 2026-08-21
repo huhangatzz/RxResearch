@@ -14,207 +14,140 @@ import RxDataSources
 
 import MJRefresh
 
-class TreeViewController: BaseTableViewController {
-    
+final class TreeViewController: BaseTableViewController {
+    private typealias TreeSection = SectionModel<TabModel, TabModel>
+
     private let type: TagType
-    
     private lazy var viewModel = TreeViewModel(type: type)
-    
+    private let sections = BehaviorRelay<[TreeSection]>(value: [])
+    private var tabs: [TabModel] = []
+
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<TreeSection>(
+        configureCell: { [weak self] dataSource, tableView, indexPath, item in
+            guard let self else { return UITableViewCell() }
+
+            switch AccountManager.shared.layoutType {
+            case .list:
+                let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.className)!
+                cell.textLabel?.text = item.name
+                cell.textLabel?.font = .systemFont(ofSize: 15)
+                cell.accessoryType = .disclosureIndicator
+                return cell
+
+            case .wrap:
+                let cell = tableView.dequeueReusableCell(withIdentifier: TreeCell.className) as! TreeCell
+                cell.configure(with: dataSource.sectionModels[indexPath.section].model)
+                cell.onSelect = { [weak self] tab in
+                    self?.showArticles(for: tab)
+                }
+                return cell
+            }
+        },
+        titleForHeaderInSection: { dataSource, section in
+            dataSource.sectionModels[section].model.name
+        }
+    )
+
     init(type: TagType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
     }
-    
-    @MainActor required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
+        binding()
+        viewModel.loadData()
     }
 }
 
-extension TreeViewController {
-    private func setupUI() {
+private extension TreeViewController {
+    func setupUI() {
         title = type.title
         tableView.mj_footer = nil
+        tableView.separatorStyle = .none
     }
-    
-    private func binding() {
-        
-        viewModel.inputs.loadData()
-        
+
+    func binding() {
         tableView.mj_header?.rx.refresh
-            .bind(onNext: viewModel.inputs.loadData)
+            .bind(onNext: viewModel.loadData)
             .disposed(by: rx.disposeBag)
-        
-        viewModel.outputs.refreshSubject
+
+        viewModel.refreshSubject
             .bind(to: tableView.rx.refreshAction)
             .disposed(by: rx.disposeBag)
-        
-        viewModel.outputs.networkError
+
+        viewModel.networkError
             .bind(to: rx.networkError)
             .disposed(by: rx.disposeBag)
-        
+
         errorRetry
-            .bind(onNext: viewModel.inputs.loadData)
+            .bind(onNext: viewModel.loadData)
             .disposed(by: rx.disposeBag)
-        
-        viewModel.outputs.dataSource
-            .asDriver(onErrorJustReturn: [])
-            .drive(rx.tableViewSectionAndFlexLayoutCell)
+
+        viewModel.dataSource
+            .asDriver()
+            .drive(onNext: { [weak self] tabs in
+                self?.apply(tabs: tabs)
+            })
             .disposed(by: rx.disposeBag)
-        
+
+        sections
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: rx.disposeBag)
+
         tableView.rx.modelSelected(TabModel.self)
-            .subscribe { [weak self] tab in
-                guard let self else { return }
-                let vc = SingleTabListViewController(type: self.type, tabModel: tab)
-                self.navigationController?.pushViewController(vc, animated: true)
+            .bind { [weak self] tab in
+                guard AccountManager.shared.layoutType == .list else { return }
+                self?.showArticles(for: tab)
             }
             .disposed(by: rx.disposeBag)
-        
-        NotificationCenter.default.rx.notification(.Layout.typeChange).subscribe(onNext: { [weak self] _ in
-            /// 使用reloadData,并不能更改数据源的结构,需要直接调用这个方法才行
-            guard let self else { return }
-            self.tableViewSectionAndFlexLayoutCell(tabs: self.viewModel.outputs.dataSource.value)
-        }).disposed(by: rx.disposeBag)
-    }
-}
 
-extension TreeViewController {
-    fileprivate func tableViewSectionAndCellConfig(tabs: [TabModel]) {
-        guard tabs.isNotEmpty else {
-            isEmptyRelay.accept(true)
-            return
-        }
-        
-        /// 这种带有section的tableView,不能通过一级菜单确定是否有数据,需要将二维数组进行降维打击
-        let children = tabs.compactMap { $0.children }
-        let deepChildren = children.flatMap { $0 }.compactMap { $0.children }.flatMap { $0 }
-        isEmptyRelay.accept(deepChildren.isEmpty)
-        
-        let sectionModels = tabs.map { tab in
-            return SectionModel(model: tab, items: tab.children ?? [])
-        }
-
-        let items = Observable.just(sectionModels)
-        
-        /// 必须要加这一行,否则再次下拉刷新就崩溃,崩溃如下,后面想想如何优化
-        /// Assertion failed: This is a feature to warn you that there is already a delegate (or data source) set somewhere previously. The action you are trying to perform will clear that delegate (data source) and that means that some of your features that depend on that delegate (data source) being set will likely stop working.
-        /// If you are ok with this, try to set delegate (data source) to `nil` in front of this operation.
-        tableView.dataSource = nil
-
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<TabModel, TabModel>>(
-            configureCell: { (ds, tv, indexPath, _) in
-                
-                let cell = tv.dequeueReusableCell(withIdentifier: UITableViewCell.className)!
-                cell.textLabel?.text = ds.sectionModels[indexPath.section].model.children?[indexPath.row].name
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
-                cell.accessoryType = .disclosureIndicator
-                return cell
-            
-            },
-            titleForHeaderInSection: { ds, index in
-                /// 这里是顶部悬停
-                return ds.sectionModels[index].model.name
-            },
-            titleForFooterInSection: { ds, index in
-                /// 这里是底部悬停
-                return nil
-                return ds.sectionModels[index].model.name
-            },
-            sectionIndexTitles: { _ in
-                /// 一级目录下多达60个,显示不全,会出异常
-                return nil
-                return tabs.compactMap { $0.name }
-            })
-
-        /// 绑定单元格数据
-        items.bind(to: tableView.rx.items(dataSource: dataSource))
+        NotificationCenter.default.rx.notification(.Layout.typeChange)
+            .bind { [weak self] _ in
+                self?.rebuildSections()
+            }
             .disposed(by: rx.disposeBag)
     }
-}
 
-extension TreeViewController {
-    fileprivate func tableViewSectionAndFlexLayoutCell(tabs: [TabModel]) {
-        guard tabs.isNotEmpty else {
-            isEmptyRelay.accept(true)
-            return
-        }
-        
-        /// 过滤掉子节点为空的数据
-        let tabs = tabs.filter { $0.children?.isNotEmpty == true }
-        
-        /// 这种带有section的tableView,不能通过一级菜单确定是否有数据,需要将二维数组进行降维打击
-        let children = tabs.compactMap { $0.children }
-        let deepChildren = children.flatMap { $0 }.compactMap { $0.children }.flatMap { $0 }
-        isEmptyRelay.accept(deepChildren.isEmpty)
-        
-        let sectionModels = tabs.map { tab in
+    func apply(tabs: [TabModel]) {
+        self.tabs = tabs.filter { $0.children?.isNotEmpty == true }
+        let children = self.tabs.flatMap { $0.children ?? [] }
+        isEmptyRelay.accept(children.isEmpty)
+        rebuildSections()
+    }
+
+    func rebuildSections() {
+        let result = tabs.map { tab -> TreeSection in
+            let items: [TabModel]
             switch AccountManager.shared.layoutType {
             case .list:
-                return SectionModel(model: tab, items: tab.children ?? [])
+                items = tab.children ?? []
             case .wrap:
-                return SectionModel(model: tab, items: [tab])
+                // 换行模式每个 section 只需要一个承载 CollectionView 的 Cell。
+                items = [tab]
             }
-            
+            return TreeSection(model: tab, items: items)
         }
+        sections.accept(result)
+    }
 
-        let items = Observable.just(sectionModels)
-        
-        tableView.dataSource = nil
-
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<TabModel, TabModel>>(
-            configureCell: { (ds, tv, indexPath, _) in
-                
-                switch AccountManager.shared.layoutType {
-                case .list:
-                    let cell = tv.dequeueReusableCell(withIdentifier: UITableViewCell.className)!
-                    cell.textLabel?.text = ds.sectionModels[indexPath.section].model.children?[indexPath.row].name
-                    cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
-                    cell.accessoryType = .disclosureIndicator
-                    return cell
-                case .wrap:
-                    let cell = tv.dequeueReusableCell(withIdentifier: TreeCell.className) as! TreeCell
-                    cell.model = ds.sectionModels[indexPath.section].model
-                    cell.buttonTap.subscribe(onNext: { [weak self] model in
-                        guard let self else { return }
-                        let vc = SingleTabListViewController(type: self.type, tabModel: model)
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }).disposed(by: cell.disposeBag)
-                    return cell
-                }
-            
-            },
-            titleForHeaderInSection: { ds, index in
-                /// 这里是顶部悬停
-                return ds.sectionModels[index].model.name
-            })
-
-        /// 绑定单元格数据
-        items.bind(to: tableView.rx.items(dataSource: dataSource))
-            .disposed(by: rx.disposeBag)
+    func showArticles(for tab: TabModel) {
+        let controller = SingleTabListViewController(type: type, tabModel: tab) { [weak self] info in
+            self?.pushToWebViewController(webLoadInfo: info)
+        }
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 extension TreeViewController: TabBarVCChildrenRefreshProtocol {
     func dataRefresh() {
         debugLog("\(className) dataRefresh")
-        viewModel.inputs.loadData()
-    }
-}
-
-extension Reactive where Base == TreeViewController {
-    var tableViewSectionAndCellConfig: Binder<[TabModel]> {
-        return Binder(base) { base, tabs in
-            base.tableViewSectionAndCellConfig(tabs: tabs)
-        }
-    }
-    
-    var tableViewSectionAndFlexLayoutCell: Binder<[TabModel]> {
-        return Binder(base) { base, tabs in
-            base.tableViewSectionAndFlexLayoutCell(tabs: tabs)
-        }
+        viewModel.loadData()
     }
 }
