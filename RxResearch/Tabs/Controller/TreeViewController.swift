@@ -71,6 +71,13 @@ private extension TreeViewController {
         title = type.title
         tableView.mj_footer = nil
         tableView.separatorStyle = .none
+        // 首屏留白应随内容一起滚走，不能使用 contentInset，否则悬浮标题顶部会出现透明缝隙。
+        tableView.tableHeaderView = UIView(
+            frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 4)
+        )
+        // 压缩系统分区标题高度，减少标题与第一行 Item 之间的空白。
+        tableView.sectionHeaderHeight = 30
+        tableView.estimatedSectionHeaderHeight = 30
     }
 
     func binding() {

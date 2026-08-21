@@ -14,10 +14,11 @@ final class TreeCell: UITableViewCell {
 
     private enum Layout {
         static let horizontalInset: CGFloat = 12
-        static let verticalInset: CGFloat = 12
+        static let topInset: CGFloat = 2
+        static let bottomInset: CGFloat = 6
         static let itemHeight: CGFloat = 30
         static let horizontalSpacing: CGFloat = 12
-        static let verticalSpacing: CGFloat = 12
+        static let verticalSpacing: CGFloat = 6
         static let horizontalTextPadding: CGFloat = 20
     }
 
@@ -28,9 +29,9 @@ final class TreeCell: UITableViewCell {
         layout.minimumInteritemSpacing = Layout.horizontalSpacing
         layout.minimumLineSpacing = Layout.verticalSpacing
         layout.sectionInset = UIEdgeInsets(
-            top: Layout.verticalInset,
+            top: Layout.topInset,
             left: Layout.horizontalInset,
-            bottom: Layout.verticalInset,
+            bottom: Layout.bottomInset,
             right: Layout.horizontalInset
         )
 
@@ -102,7 +103,7 @@ private extension TreeCell {
             }
         }
 
-        return Layout.verticalInset * 2
+        return Layout.topInset + Layout.bottomInset
             + CGFloat(rowCount) * Layout.itemHeight
             + CGFloat(rowCount - 1) * Layout.verticalSpacing
     }
