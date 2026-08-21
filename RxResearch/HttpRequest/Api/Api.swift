@@ -64,11 +64,34 @@ extension Api {
 extension Api {
     /// 我的 取消收藏和点击收藏操作为post,其他为get
     enum My {
+        static let coinRank = "coin/rank/"
+        
+        static let userCoinInfo = "lg/coin/userinfo/json"
+        
+        static let myCoinList = "lg/coin/list/"
+        
+        static let collectArticleList = "lg/collect/list/"
         
         static let collectArticle = "lg/collect/"
 
         static let unCollectArticle = "lg/uncollect_originId/"
- 
+        
+        static let unreadCount = "message/lg/count_unread/json"
+        
+        static let unreadList = "message/lg/unread_list/"
+        
+        static let readList = "message/lg/readed_list/"
+    }
+}
+
+extension Api {
+    /// 用户登录注册登出 登录注册为post 登出为get
+    enum Account {
+        static let login = "user/login"
+
+        static let register = "user/register"
+
+        static let logout = "user/logout/json"
     }
 }
 

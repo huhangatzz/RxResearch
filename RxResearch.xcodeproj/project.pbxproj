@@ -106,6 +106,16 @@
 		41C6275F3037059300602223 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6275E3037059300602223 /* Notification.Name.swift */; };
 		41C627673037DCE800602223 /* Flex+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627663037DCE800602223 /* Flex+Extension.swift */; };
 		41C627783037EA1100602223 /* TreeTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627773037EA1100602223 /* TreeTagCell.swift */; };
+		41C627843037FF1D00602223 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627833037FF1D00602223 /* MyViewModel.swift */; };
+		41C6278B303823B200602223 /* My.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6278A303823B200602223 /* My.swift */; };
+		41C62790303829CD00602223 /* CoinRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6278F303829CD00602223 /* CoinRank.swift */; };
+		41C6279530382CFB00602223 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6279430382CFB00602223 /* AccountService.swift */; };
+		41C6279A3038405800602223 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627993038405800602223 /* MyView.swift */; };
+		41C627A1303845DB00602223 /* InnerEventResponsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6279E303845DB00602223 /* InnerEventResponsible.swift */; };
+		41C627A2303845DB00602223 /* InnerViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6279F303845DB00602223 /* InnerViewEvent.swift */; };
+		41C627A830384E3500602223 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627A730384E3500602223 /* LogoutCell.swift */; };
+		41C627AD30384FFE00602223 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627AC30384FFE00602223 /* MessageCell.swift */; };
+		41C627B33038560200602223 /* MessageReadyStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C627B23038560200602223 /* MessageReadyStatus.swift */; };
 		41C628103037F00000602223 /* SegmentedPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6280F3037F00000602223 /* SegmentedPageView.swift */; };
 		41C628123037F10000602223 /* TabsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628113037F10000602223 /* TabsService.swift */; };
 		41C628143037F10000602223 /* TabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C628133037F10000602223 /* TabsViewModel.swift */; };
@@ -226,6 +236,16 @@
 		41C6275E3037059300602223 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
 		41C627663037DCE800602223 /* Flex+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flex+Extension.swift"; sourceTree = "<group>"; };
 		41C627773037EA1100602223 /* TreeTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTagCell.swift; sourceTree = "<group>"; };
+		41C627833037FF1D00602223 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
+		41C6278A303823B200602223 /* My.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My.swift; sourceTree = "<group>"; };
+		41C6278F303829CD00602223 /* CoinRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRank.swift; sourceTree = "<group>"; };
+		41C6279430382CFB00602223 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		41C627993038405800602223 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		41C6279E303845DB00602223 /* InnerEventResponsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerEventResponsible.swift; sourceTree = "<group>"; };
+		41C6279F303845DB00602223 /* InnerViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerViewEvent.swift; sourceTree = "<group>"; };
+		41C627A730384E3500602223 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		41C627AC30384FFE00602223 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		41C627B23038560200602223 /* MessageReadyStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReadyStatus.swift; sourceTree = "<group>"; };
 		41C6280F3037F00000602223 /* SegmentedPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPageView.swift; sourceTree = "<group>"; };
 		41C628113037F10000602223 /* TabsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsService.swift; sourceTree = "<group>"; };
 		41C628133037F10000602223 /* TabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewModel.swift; sourceTree = "<group>"; };
@@ -284,6 +304,7 @@
 		410E503730295ED7007F7567 /* RxResearch */ = {
 			isa = PBXGroup;
 			children = (
+				41C627A0303845DB00602223 /* InnerViewEvent */,
 				41C6257F3032A8D900602223 /* HttpRequest */,
 				411C91D33029836100625E82 /* Account */,
 				41E23E10302AF3AB004D96C7 /* Home */,
@@ -484,6 +505,7 @@
 				41C6265830344A1700602223 /* AccountInfo.swift */,
 				41C626D230358C7500602223 /* HotKey.swift */,
 				41C627393036E1E800602223 /* TabModel.swift */,
+				41C6278F303829CD00602223 /* CoinRank.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -496,6 +518,7 @@
 				41C625D33032E58800602223 /* MockService.swift */,
 				41C6268130344E0100602223 /* MyService.swift */,
 				41C628113037F10000602223 /* TabsService.swift */,
+				41C6279430382CFB00602223 /* AccountService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -588,6 +611,15 @@
 				41C627663037DCE800602223 /* Flex+Extension.swift */,
 			);
 			path = "Flex+Extension";
+			sourceTree = "<group>";
+		};
+		41C627A0303845DB00602223 /* InnerViewEvent */ = {
+			isa = PBXGroup;
+			children = (
+				41C6279E303845DB00602223 /* InnerEventResponsible.swift */,
+				41C6279F303845DB00602223 /* InnerViewEvent.swift */,
+			);
+			path = InnerViewEvent;
 			sourceTree = "<group>";
 		};
 		41E23E0A302ACA8A004D96C7 /* Base */ = {
@@ -725,6 +757,8 @@
 		41E23E1C302AF460004D96C7 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				41C6278A303823B200602223 /* My.swift */,
+				41C627B23038560200602223 /* MessageReadyStatus.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -732,6 +766,9 @@
 		41E23E1D302AF460004D96C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41C627993038405800602223 /* MyView.swift */,
+				41C627A730384E3500602223 /* LogoutCell.swift */,
+				41C627AC30384FFE00602223 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -739,6 +776,7 @@
 		41E23E1E302AF460004D96C7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				41C627833037FF1D00602223 /* MyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -880,12 +918,15 @@
 				41C628123037F10000602223 /* TabsService.swift in Sources */,
 				41C628143037F10000602223 /* TabsViewModel.swift in Sources */,
 				41C628163037F10000602223 /* SingleTabListViewModel.swift in Sources */,
+				41C6279A3038405800602223 /* MyView.swift in Sources */,
 				41C628103037F00000602223 /* SegmentedPageView.swift in Sources */,
+				41C627A830384E3500602223 /* LogoutCell.swift in Sources */,
 				41C626C53035880F00602223 /* SearchResultController.swift in Sources */,
 				41C6273F3036E2EC00602223 /* SingleTabListViewController.swift in Sources */,
 				41E23E0C302ACA97004D96C7 /* BaseNavigationController.swift in Sources */,
 				411C91D8302983C300625E82 /* AccountManageable.swift in Sources */,
 				41C625D43032E58800602223 /* MockService.swift in Sources */,
+				41C6279530382CFB00602223 /* AccountService.swift in Sources */,
 				41E23E22302AF4AC004D96C7 /* TabsViewController.swift in Sources */,
 				41C625AE3032B3BE00602223 /* Api.swift in Sources */,
 				411C91CC30297C9000625E82 /* CustomLogFormatter.swift in Sources */,
@@ -910,6 +951,7 @@
 				41C6269C30353B8F00602223 /* HotKeyFlexBoxViewController.swift in Sources */,
 				41C625973032AE0400602223 /* BaseModel.swift in Sources */,
 				411C91BF30296FDC00625E82 /* NetworkActivityLogger.swift in Sources */,
+				41C62790303829CD00602223 /* CoinRank.swift in Sources */,
 				411C91D63029838D00625E82 /* AccountManager.swift in Sources */,
 				411C91E13029C2B200625E82 /* KeyConstants.swift in Sources */,
 				41C627063035ADD200602223 /* BaseTableViewModel.swift in Sources */,
@@ -934,6 +976,7 @@
 				411C91CE3029803A00625E82 /* AppDelegate+RouterConfig.swift in Sources */,
 				411C91BC302969F900625E82 /* UITraitCollection+Extension.swift in Sources */,
 				4197E358302C65DC00A4A9FA /* ObserverType+Extension.swift in Sources */,
+				41C627B33038560200602223 /* MessageReadyStatus.swift in Sources */,
 				41C625883032A8F200602223 /* Info.swift in Sources */,
 				41C6268730344F9300602223 /* Dictionary+Extension.swift in Sources */,
 				41C6257B3032A5C300602223 /* UIScrollView+RxSwift.swift in Sources */,
@@ -946,10 +989,14 @@
 				41C6259D3032AECF00602223 /* Page.swift in Sources */,
 				411C91E93029C95200625E82 /* Constant.swift in Sources */,
 				41C626A130353C7900602223 /* Theme.swift in Sources */,
+				41C627A1303845DB00602223 /* InnerEventResponsible.swift in Sources */,
+				41C627A2303845DB00602223 /* InnerViewEvent.swift in Sources */,
 				41C6267430344C3A00602223 /* OtherApp.swift in Sources */,
 				411C91D0302980C200625E82 /* LogUtils.swift in Sources */,
 				4197E363302C709800A4A9FA /* UINavigationController+Extension.swift in Sources */,
 				41C625BD3032BD1200602223 /* Provider.swift in Sources */,
+				41C6278B303823B200602223 /* My.swift in Sources */,
+				41C627AD30384FFE00602223 /* MessageCell.swift in Sources */,
 				41C627673037DCE800602223 /* Flex+Extension.swift in Sources */,
 				41C625923032AA5400602223 /* Banner.swift in Sources */,
 				4197E34A302C57CA00A4A9FA /* ExBehaviorRelay.swift in Sources */,
@@ -966,6 +1013,7 @@
 				41C625D93032F08400602223 /* InfoCell.swift in Sources */,
 				41C625B33032B9D300602223 /* Int+Extension.swift in Sources */,
 				4197E33B302C532B00A4A9FA /* EmptyDataSetView+Extension.swift in Sources */,
+				41C627843037FF1D00602223 /* MyViewModel.swift in Sources */,
 				4197E33C302C532B00A4A9FA /* EmptyDataSet.swift in Sources */,
 				4197E33D302C532B00A4A9FA /* EmptyDataSetSource.swift in Sources */,
 				41C625E03032F48600602223 /* String+Extension.swift in Sources */,

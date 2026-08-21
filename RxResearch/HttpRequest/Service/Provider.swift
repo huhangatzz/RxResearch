@@ -34,5 +34,8 @@ let myEndpointClosure = { (target: MyService) -> Endpoint in
 }
 let myProvider = MoyaProvider<MyService>(endpointClosure: myEndpointClosure, plugins: plugins)
 
+/// 账号
+let accountProvider = MoyaProvider<AccountService>(plugins: plugins)
+
 /// 悼念数据业务
 let mockProvider = MoyaProvider(stubClosure: MoyaProvider<MockService>.immediatelyStub)

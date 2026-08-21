@@ -48,3 +48,9 @@ let kBottomMargin = kSafeBottomMargin + kTabbarHeight
 
 /// 是否是第一次进入App
 let kIsFirst = "IsFirst"
+
+/// 保存用户名的key
+let kUsername = "kUsername"
+
+/// 保存密码的key
+let kPassword = "kPassword"
